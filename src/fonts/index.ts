@@ -20,6 +20,9 @@ export const sourceSerifLatin = localFont({
   variable: "--font-source-serif-latin",
   display: "swap",
   preload: true,
+  // Без авто-фоллбэка: next/font иначе добавляет в стек лицо на базе local(Arial),
+  // и для латиницы оно перехватывает отрисовку раньше, чем латинский сабсет.
+  adjustFontFallback: false,
 });
 
 export const sourceSerifCyrillic = localFont({
@@ -29,6 +32,9 @@ export const sourceSerifCyrillic = localFont({
   variable: "--font-source-serif-cyrillic",
   display: "swap",
   preload: true,
+  // Без авто-фоллбэка: next/font иначе добавляет в стек лицо на базе local(Arial),
+  // и для латиницы оно перехватывает отрисовку раньше, чем латинский сабсет.
+  adjustFontFallback: false,
 });
 
 export const fontVariables = `${sourceSerifCyrillic.variable} ${sourceSerifLatin.variable}`;
