@@ -12,11 +12,8 @@
   font-weight: 400;
 }
 
-/* У переключателя языка подчёркивание сохраняется (в отличие от навигации). */
+/* Активный язык выделяется только начертанием — без подчёркивания. */
 .linkActive {
   color: var(--color-primary);
   font-weight: 600;
-  text-decoration: underline;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
 }
