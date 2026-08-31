@@ -16,4 +16,72 @@
   max-width: 720px;
   min-width: 0;
   padding: 0 32px;
+
+  /* Контейнер проявляется из лёгкого размытия. */
+  animation: containerReveal 700ms ease-out both;
+}
+
+/*
+ * Блоки страницы всплывают снизу по очереди.
+ * Кривая подобрана как плавное затухание без отскока, задержка между
+ * блоками 60ms. Анимация перезапускается при смене раздела: контейнер
+ * в PageShell.tsx получает key по текущему пути.
+ */
+.container > * {
+  animation: blockReveal 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.container > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.container > *:nth-child(2) {
+  animation-delay: 60ms;
+}
+.container > *:nth-child(3) {
+  animation-delay: 120ms;
+}
+.container > *:nth-child(4) {
+  animation-delay: 180ms;
+}
+.container > *:nth-child(5) {
+  animation-delay: 240ms;
+}
+.container > *:nth-child(6) {
+  animation-delay: 300ms;
+}
+.container > *:nth-child(7) {
+  animation-delay: 360ms;
+}
+.container > *:nth-child(8) {
+  animation-delay: 420ms;
+}
+
+@keyframes containerReveal {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes blockReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Уважаем системную настройку «уменьшить движение». */
+@media (prefers-reduced-motion: reduce) {
+  .container,
+  .container > * {
+    animation: none;
+  }
 }
