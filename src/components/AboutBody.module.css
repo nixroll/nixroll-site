@@ -1,0 +1,17 @@
+.body {
+  min-width: 100%;
+  width: min-content;
+  font-weight: 400;
+  color: var(--color-text);
+  font-size: 16px;
+}
+
+.paragraph {
+  margin: 0 0 16px 0;
+  line-height: normal;
+  text-wrap: pretty;
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}

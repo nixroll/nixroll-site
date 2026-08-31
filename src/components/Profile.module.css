@@ -1,0 +1,47 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.avatar {
+  position: relative;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.avatarImg {
+  position: absolute;
+  width: 210.5%;
+  height: 140.33%;
+  max-width: none;
+  top: -34.17%;
+  left: -50.75%;
+  object-fit: cover;
+}
+
+.nameEmail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: normal;
+}
+
+.name {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 18px;
+  letter-spacing: 0.36px;
+}
+
+.email {
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--color-muted);
+}

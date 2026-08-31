@@ -1,0 +1,19 @@
+.page {
+  background: var(--color-bg);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 128px 0;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 64px;
+  max-width: 720px;
+  min-width: 0;
+  padding: 0 32px;
+}

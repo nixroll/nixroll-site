@@ -1,0 +1,72 @@
+export type Note = {
+  id: string;
+  slug: string;
+  status: "published" | "draft";
+  publishedAt: string; // ISO date
+  ru: { title: string; body: string[] };
+  en: { title: string; body: string[] };
+  image?: {
+    url: string;
+    width: number;
+    height: number;
+    altRu: string;
+    altEn: string;
+  };
+  links?: { label: string; href: string }[];
+};
+
+/**
+ * ТЗ 6.1: сейчас опубликовано ровно 2 заметки, по одной каждого типа
+ * вёрстки (с изображением и без) — для проверки обоих макетов. Позже
+ * заменяется на выборку из БД (см. src/lib/notes.ts).
+ */
+export const notesSeed: Note[] = [
+  {
+    id: "m6-home-agent",
+    slug: "m6-and-a-home-agent",
+    status: "published",
+    publishedAt: "2026-08-31",
+    en: {
+      title: "M6 and a home agent",
+      body: [
+        "Apple has refreshed the Mac mini and the Mac Studio. M6 is the company's first two-nanometer chip, and M5 Ultra is built from four dies and holds up to 512GB of unified memory at 1.2TB/s. Apple now talks about running large language models locally in plain terms.",
+        "What interests me is not the benchmarks. A box the size of a book, sitting quietly at home and running around the clock, is a ready-made server for an autonomous agent with remote access. Not for experiments, but for routine: triaging incoming tasks, assembling a sprint in Linear, preparing a summary for the morning.",
+        "The difference between the models matters. M6 tops out at 32GB, which is enough for smaller models and for an agent that calls external APIs. If you need a genuinely large model running locally, that is a Mac Studio with M5 Ultra.",
+      ],
+    },
+    ru: {
+      title: "M6 и домашний агент",
+      body: [
+        "Apple обновила Mac mini и Mac Studio. M6 стал первым двухнанометровым чипом компании, а M5 Ultra собран из четырёх кристаллов и держит до 512 ГБ объединённой памяти на 1,2 ТБ/с. Про локальный запуск больших языковых моделей Apple говорит уже прямым текстом.",
+        "Мне это интересно не ради бенчмарков. Коробка размером с книгу, которая тихо стоит дома и работает круглосуточно, это готовый сервер для автономного агента с удалённым доступом. Не для экспериментов, а для рутины: разобрать входящие задачи, собрать спринт в Linear, подготовить сводку к утру.",
+        "Разница между моделями важна. У M6 до 32 ГБ памяти: этого достаточно для небольших моделей и для агента, который ходит во внешние API. Если нужна по-настоящему большая модель локально, речь уже про Mac Studio на M5 Ultra.",
+      ],
+    },
+    image: {
+      url: "/images/note-m6-desk.jpg",
+      width: 1920,
+      height: 1080,
+      altEn: "A Mac mini on a desk, connected to a keyboard and monitor",
+      altRu: "Mac mini на столе, подключённый к клавиатуре и монитору",
+    },
+    links: [{ label: "Apple", href: "https://www.apple.com/" }],
+  },
+  {
+    id: "starting",
+    slug: "starting",
+    status: "published",
+    publishedAt: "2026-08-31",
+    en: {
+      title: "Starting",
+      body: [
+        "A place for short notes on what I find worth keeping: products, technology, banking systems. Not articles, just observations, usually a paragraph or two.",
+      ],
+    },
+    ru: {
+      title: "Начало",
+      body: [
+        "Буду коротко записывать здесь то, что показалось важным: продукты, технологии, банковские системы. Не статьи, а наблюдения, обычно на пару абзацев.",
+      ],
+    },
+  },
+];

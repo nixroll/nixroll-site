@@ -1,0 +1,63 @@
+.note {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  font-size: 16px;
+  line-height: normal;
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-text);
+  width: 100%;
+}
+
+.date {
+  margin: 0;
+  font-weight: 400;
+  color: var(--color-muted);
+  width: 100%;
+}
+
+.body {
+  width: 100%;
+  font-weight: 400;
+  color: var(--color-text);
+  font-size: 16px;
+}
+
+.paragraph {
+  margin: 0 0 16px 0;
+  line-height: normal;
+  text-wrap: pretty;
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.link {
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+}
