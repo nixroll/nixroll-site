@@ -12,10 +12,8 @@
   font-weight: 400;
 }
 
+/* Активный раздел выделяется только начертанием — без подчёркивания. */
 .linkActive {
   color: var(--color-primary);
   font-weight: 600;
-  text-decoration: underline;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
 }

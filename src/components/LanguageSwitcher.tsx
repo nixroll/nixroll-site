@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { t, type Locale } from "@/lib/i18n";
-import styles from "./Nav.module.css";
+import styles from "./LanguageSwitcher.module.css";
 
 /**
  * Переключатель языка сохраняет текущий раздел (about/work/notes) при
@@ -15,10 +15,8 @@ export function LanguageSwitcher({
   section: "about" | "work" | "notes";
 }) {
   const dict = t(locale);
-  const other: Locale = locale === "en" ? "ru" : "en";
-
   return (
-    <div className={styles.nav}>
+    <div className={styles.switcher}>
       <Link
         href={`/en/${section}`}
         className={locale === "en" ? styles.linkActive : styles.link}
@@ -35,7 +33,6 @@ export function LanguageSwitcher({
       >
         {dict.lang.ru}
       </Link>
-      <span hidden>{other}</span>
     </div>
   );
 }
