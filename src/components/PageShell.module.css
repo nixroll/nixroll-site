@@ -16,47 +16,58 @@
   max-width: 720px;
   min-width: 0;
   padding: 0 32px;
-
-  /* Контейнер проявляется из лёгкого размытия. */
-  animation: containerReveal 700ms ease-out both;
 }
 
 /*
- * Блоки страницы всплывают снизу по очереди.
- * Кривая подобрана как плавное затухание без отскока, задержка между
- * блоками 60ms. Анимация перезапускается при смене раздела: контейнер
- * в PageShell.tsx получает key по текущему пути.
+ * Появление блоков страницы: проявление из лёгкого размытия (700ms) плюс
+ * всплытие снизу на 12px (800ms) со ступенькой 60ms между блоками.
+ * Анимация висит на самих блоках, а не на контейнере, — иначе размытие
+ * родителя затрагивало бы и шапку.
+ * Перезапускается при смене раздела: контейнер в PageShell.tsx получает
+ * key по текущему пути.
  */
 .container > * {
-  animation: blockReveal 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: blockRise 800ms cubic-bezier(0.22, 1, 0.36, 1) both,
+    blockFade 700ms ease-out both;
 }
 
-.container > *:nth-child(1) {
+/* Шапка (аватар, имя, почта) одинакова на всех страницах — она статична. */
+.container > *:first-child {
+  animation: none;
+}
+
+.container > *:nth-child(2) {
   animation-delay: 0ms;
 }
-.container > *:nth-child(2) {
+.container > *:nth-child(3) {
   animation-delay: 60ms;
 }
-.container > *:nth-child(3) {
+.container > *:nth-child(4) {
   animation-delay: 120ms;
 }
-.container > *:nth-child(4) {
+.container > *:nth-child(5) {
   animation-delay: 180ms;
 }
-.container > *:nth-child(5) {
+.container > *:nth-child(6) {
   animation-delay: 240ms;
 }
-.container > *:nth-child(6) {
+.container > *:nth-child(7) {
   animation-delay: 300ms;
 }
-.container > *:nth-child(7) {
+.container > *:nth-child(8) {
   animation-delay: 360ms;
 }
-.container > *:nth-child(8) {
-  animation-delay: 420ms;
+
+@keyframes blockRise {
+  from {
+    transform: translateY(12px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
-@keyframes containerReveal {
+@keyframes blockFade {
   from {
     opacity: 0;
     filter: blur(6px);
@@ -67,20 +78,8 @@
   }
 }
 
-@keyframes blockReveal {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Уважаем системную настройку «уменьшить движение». */
 @media (prefers-reduced-motion: reduce) {
-  .container,
   .container > * {
     animation: none;
   }
