@@ -42,16 +42,18 @@ export function NoteCard({
 }) {
   return (
     <article className={styles.note}>
-      <div className={styles.header}>
-        <p className={styles.title}>{note.title}</p>
-        <p className={styles.date}>{note.dateLabel}</p>
-      </div>
-      <div className={styles.body}>
-        {note.paragraphs.map((paragraph, index) => (
-          <p key={index} className={styles.paragraph}>
-            {renderParagraph(paragraph, note.links, index === 0)}
-          </p>
-        ))}
+      <div className={styles.content}>
+        <div className={styles.header}>
+          <p className={styles.title}>{note.title}</p>
+          <p className={styles.date}>{note.dateLabel}</p>
+        </div>
+        <div className={styles.body}>
+          {note.paragraphs.map((paragraph, index) => (
+            <p key={index} className={styles.paragraph}>
+              {renderParagraph(paragraph, note.links, index === 0)}
+            </p>
+          ))}
+        </div>
       </div>
       {note.image ? (
         <div className={styles.imageWrap}>

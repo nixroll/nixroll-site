@@ -1,4 +1,14 @@
+/* Заметка: между текстовым блоком и обложкой 28px (Figma). */
 .note {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  width: 100%;
+}
+
+/* Content: заголовок с датой и текст — между ними 16px. */
+.content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;

@@ -1,3 +1,12 @@
+/* Контейнер Rows: расстояние между местами работы (Figma — 48px). */
+.rows {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+  width: 100%;
+}
+
 .row {
   display: flex;
   flex-direction: column;

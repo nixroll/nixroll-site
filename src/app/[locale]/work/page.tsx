@@ -4,6 +4,7 @@ import { PageShell } from "@/components/PageShell";
 import { Profile } from "@/components/Profile";
 import { Nav } from "@/components/Nav";
 import { WorkRow } from "@/components/WorkRow";
+import rowStyles from "@/components/WorkRow.module.css";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { LOCALES, isLocale } from "@/lib/i18n";
 import { work } from "@/content/work";
@@ -37,9 +38,11 @@ export default async function WorkPage({
     <PageShell>
       <Profile locale={locale} />
       <Nav locale={locale} active="work" />
-      {work.map((row, index) => (
-        <WorkRow key={index} row={row} locale={locale} />
-      ))}
+      <div className={rowStyles.rows}>
+        {work.map((row, index) => (
+          <WorkRow key={index} row={row} locale={locale} />
+        ))}
+      </div>
       <LanguageSwitcher locale={locale} section="work" />
     </PageShell>
   );
