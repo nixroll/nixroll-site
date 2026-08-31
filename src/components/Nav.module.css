@@ -8,12 +8,12 @@
 }
 
 .link {
-  color: var(--color-muted);
+  color: var(--color-secondary);
   font-weight: 400;
 }
 
 .linkActive {
-  color: var(--color-text);
+  color: var(--color-primary);
   font-weight: 600;
   text-decoration: underline;
   text-underline-position: from-font;

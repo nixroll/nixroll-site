@@ -34,7 +34,7 @@
 .name {
   margin: 0;
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-primary);
   font-size: 18px;
   letter-spacing: 0.36px;
 }
@@ -43,5 +43,5 @@
   margin: 0;
   font-weight: 400;
   font-size: 16px;
-  color: var(--color-muted);
+  color: var(--color-secondary);
 }

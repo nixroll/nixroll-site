@@ -9,9 +9,9 @@
 }
 
 .label {
-  color: var(--color-muted);
+  color: var(--color-secondary);
 }
 
 .link {
-  color: var(--color-text);
+  color: var(--color-primary);
 }

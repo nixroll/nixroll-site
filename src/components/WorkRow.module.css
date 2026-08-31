@@ -18,14 +18,14 @@
 .name {
   margin: 0;
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-primary);
   width: 100%;
 }
 
 .role {
   margin: 0;
   font-weight: 400;
-  color: var(--color-muted);
+  color: var(--color-secondary);
   width: 100%;
 }
 
@@ -34,7 +34,7 @@
   padding: 0;
   list-style: disc;
   width: 100%;
-  color: var(--color-text);
+  color: var(--color-primary);
   font-weight: 400;
 }
 
@@ -46,7 +46,7 @@
 .paragraph {
   margin: 0;
   width: 100%;
-  color: var(--color-text);
+  color: var(--color-primary);
   font-weight: 400;
   line-height: normal;
 }
@@ -54,7 +54,7 @@
 .meta {
   margin: 0;
   width: 100%;
-  color: var(--color-muted);
+  color: var(--color-secondary);
   font-weight: 400;
   line-height: normal;
 }

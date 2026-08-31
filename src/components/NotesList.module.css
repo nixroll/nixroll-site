@@ -9,12 +9,12 @@
 .loadMore {
   font-size: 16px;
   font-weight: 400;
-  color: var(--color-muted);
+  color: var(--color-secondary);
   line-height: normal;
   white-space: nowrap;
   padding: 0;
 }
 
 .loadMore:hover {
-  color: var(--color-text);
+  color: var(--color-primary);
 }
