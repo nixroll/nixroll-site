@@ -115,8 +115,8 @@ export const work: WorkRow[] = [
       ],
     },
     meta: {
-      en: "Madrid, Spain · Office · 2019 - 2021",
-      ru: "Мадрид, Испания · Офис · 2019 - 2021",
+      en: "Madrid, Spain · Office · 2018 - 2021",
+      ru: "Мадрид, Испания · Офис · 2018 - 2021",
     },
   },
   {
