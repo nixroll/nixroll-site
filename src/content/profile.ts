@@ -22,13 +22,12 @@ export const profile = {
     src: "/images/avatar.jpg",
     alt: { en: "Portrait of Nikita Efimchik", ru: "Портрет Никиты Ефимчика" },
   },
-  // TODO(nikita): подставить реальные адреса — сейчас заглушки.
-  // Нужны: ник в Telegram, ссылки на LinkedIn и Twitter, файл резюме
-  // (положить в public/cv/ под этим же именем).
+  // TODO(nikita): файла резюме ещё нет — положить PDF в public/cv/ под этим
+  // же именем, иначе ссылка ведёт в никуда.
   connect: {
     telegram: "https://t.me/nixroll",
-    linkedin: "https://www.linkedin.com/in/nixroll",
-    twitter: "https://twitter.com/nixroll",
+    linkedin: "https://www.linkedin.com/in/nixrollco",
+    twitter: "https://x.com/nixrollco",
     email: "mailto:hi@nixroll.co",
     cv: "/cv/nikita-efimchik.pdf",
   } satisfies Record<ConnectKey, string>,
