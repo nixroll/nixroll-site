@@ -19,55 +19,91 @@
 }
 
 /*
- * Появление блоков страницы: проявление из лёгкого размытия (700ms) плюс
- * всплытие снизу на 12px (800ms) со ступенькой 60ms между блоками.
- * Анимация висит на самих блоках, а не на контейнере, — иначе размытие
- * родителя затрагивало бы и шапку.
- * Перезапускается при смене раздела: контейнер в PageShell.tsx получает
- * key по текущему пути.
+ * Появление содержимого — двухуровневая ступенька, как в референсе.
+ *
+ * Уровень 1: секции (блоки страницы начиная с третьего) проявляются из
+ *   лёгкого размытия друг за другом с шагом 60ms.
+ * Уровень 2: элементы внутри секции всплывают снизу на 12px, каждый со
+ *   своим шагом 60ms поверх задержки своей секции — то есть задержки
+ *   складываются, и внутри секции элементы стартуют вразнобой.
+ *
+ * Шапка и навигация одинаковы на всех страницах и остаются неподвижными.
+ * Анимация перезапускается при смене раздела: контейнер в PageShell.tsx
+ * получает key по текущему пути.
  */
-.container > * {
-  animation: blockRise 800ms cubic-bezier(0.22, 1, 0.36, 1) both,
-    blockFade 700ms ease-out both;
-}
 
-/*
- * Шапка (аватар, имя, почта) и навигация одинаковы на всех страницах —
- * они остаются неподвижными, анимируется только содержимое раздела.
- */
-.container > *:nth-child(-n + 2) {
-  animation: none;
+/* --- Уровень 1: секции --- */
+
+.container > *:nth-child(n + 3) {
+  animation: sectionReveal 700ms ease-out both;
+  animation-delay: var(--delay, 0ms);
 }
 
 .container > *:nth-child(3) {
-  animation-delay: 0ms;
+  --delay: 0ms;
 }
 .container > *:nth-child(4) {
-  animation-delay: 60ms;
+  --delay: 60ms;
 }
 .container > *:nth-child(5) {
-  animation-delay: 120ms;
+  --delay: 120ms;
 }
 .container > *:nth-child(6) {
-  animation-delay: 180ms;
+  --delay: 180ms;
 }
 .container > *:nth-child(7) {
-  animation-delay: 240ms;
+  --delay: 240ms;
 }
 .container > *:nth-child(8) {
-  animation-delay: 300ms;
+  --delay: 300ms;
 }
 
-@keyframes blockRise {
-  from {
-    transform: translateY(12px);
-  }
-  to {
-    transform: translateY(0);
-  }
+/* --- Уровень 2: элементы внутри секции --- */
+
+.container > *:nth-child(n + 3) > * {
+  animation: itemReveal 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* задержка секции + собственная ступенька элемента */
+  animation-delay: calc(var(--delay, 0ms) + var(--index, 0) * 60ms);
 }
 
-@keyframes blockFade {
+.container > *:nth-child(n + 3) > *:nth-child(1) {
+  --index: 0;
+}
+.container > *:nth-child(n + 3) > *:nth-child(2) {
+  --index: 1;
+}
+.container > *:nth-child(n + 3) > *:nth-child(3) {
+  --index: 2;
+}
+.container > *:nth-child(n + 3) > *:nth-child(4) {
+  --index: 3;
+}
+.container > *:nth-child(n + 3) > *:nth-child(5) {
+  --index: 4;
+}
+.container > *:nth-child(n + 3) > *:nth-child(6) {
+  --index: 5;
+}
+.container > *:nth-child(n + 3) > *:nth-child(7) {
+  --index: 6;
+}
+.container > *:nth-child(n + 3) > *:nth-child(8) {
+  --index: 7;
+}
+.container > *:nth-child(n + 3) > *:nth-child(9) {
+  --index: 8;
+}
+.container > *:nth-child(n + 3) > *:nth-child(10) {
+  --index: 9;
+}
+.container > *:nth-child(n + 3) > *:nth-child(11) {
+  --index: 10;
+}
+.container > *:nth-child(n + 3) > *:nth-child(12) {
+  --index: 11;
+}
+
+@keyframes sectionReveal {
   from {
     opacity: 0;
     filter: blur(6px);
@@ -78,9 +114,21 @@
   }
 }
 
+@keyframes itemReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Уважаем системную настройку «уменьшить движение». */
 @media (prefers-reduced-motion: reduce) {
-  .container > * {
+  .container > *,
+  .container > * > * {
     animation: none;
   }
 }
