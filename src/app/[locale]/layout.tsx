@@ -9,6 +9,12 @@ export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
 
+/**
+ * Базовый адрес для абсолютных ссылок в разметке для соцсетей.
+ * По умолчанию — боевой домен; подменяется переменной окружения.
+ */
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://nixroll.co";
+
 export async function generateMetadata({
   params,
 }: {
@@ -25,11 +31,9 @@ export async function generateMetadata({
       : "CV and notes by Nikita Efimchik, a digital product lead.";
 
   return {
+    metadataBase: new URL(siteUrl),
     title,
     description,
-    alternates: {
-      languages: { en: "/en/about", ru: "/ru/about" },
-    },
   };
 }
 

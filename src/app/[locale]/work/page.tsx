@@ -7,6 +7,7 @@ import { WorkRow } from "@/components/WorkRow";
 import rowStyles from "@/components/WorkRow.module.css";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { LOCALES, isLocale } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/metadata";
 import { work } from "@/content/work";
 
 export function generateStaticParams() {
@@ -20,9 +21,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return {
-    alternates: { languages: { en: "/en/work", ru: "/ru/work" } },
-  };
+  return pageMetadata(locale, "work");
 }
 
 export default async function WorkPage({

@@ -7,6 +7,7 @@ import { AboutBody } from "@/components/AboutBody";
 import { Connect } from "@/components/Connect";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { LOCALES, isLocale } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -19,9 +20,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return {
-    alternates: { languages: { en: "/en/about", ru: "/ru/about" } },
-  };
+  return pageMetadata(locale, "about");
 }
 
 export default async function AboutPage({

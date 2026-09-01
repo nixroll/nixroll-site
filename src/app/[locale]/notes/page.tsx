@@ -6,6 +6,7 @@ import { Nav } from "@/components/Nav";
 import { NotesList } from "@/components/NotesList";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { LOCALES, isLocale } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/metadata";
 import { getNotesPage, localizeNote } from "@/lib/notes";
 
 export const revalidate = 60;
@@ -21,9 +22,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) return {};
-  return {
-    alternates: { languages: { en: "/en/notes", ru: "/ru/notes" } },
-  };
+  return pageMetadata(locale, "notes");
 }
 
 const PAGE_SIZE = 10;
