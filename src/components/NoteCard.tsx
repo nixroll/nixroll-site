@@ -41,8 +41,10 @@ export function NoteCard({
   priorityImage?: boolean;
 }) {
   return (
-    <article className={styles.note}>
-      <div className={styles.content}>
+    /* data-reveal: текстовый блок и обложка, а внутри блока заголовок и
+       текст, появляются отдельными стартами (см. PageShell.module.css) */
+    <article className={styles.note} data-reveal>
+      <div className={styles.content} data-reveal>
         <div className={styles.header}>
           <p className={styles.title}>{note.title}</p>
           <p className={styles.date}>{note.dateLabel}</p>

@@ -17,7 +17,8 @@ export function WorkRow({
   const bullets = row.bullets[locale];
 
   return (
-    <div className={styles.row}>
+    /* data-reveal: части строки появляются отдельными стартами (см. PageShell.module.css) */
+    <div className={styles.row} data-reveal>
       <div className={styles.nameRole}>
         <p className={styles.name}>{row.name[locale]}</p>
         <p className={styles.role}>{tx(row.role[locale], locale)}</p>
