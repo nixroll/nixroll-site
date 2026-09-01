@@ -1,12 +1,21 @@
 import Image from "next/image";
+import Link from "next/link";
 import { profile } from "@/content/profile";
-import type { Locale } from "@/lib/i18n";
+import { t, type Locale } from "@/lib/i18n";
+import { href } from "@/lib/routes";
 import styles from "./Profile.module.css";
 
 export function Profile({ locale }: { locale: Locale }) {
+  const dict = t(locale);
+
   return (
     <div className={styles.profile}>
-      <div className={styles.avatar}>
+      {/* Фотография ведёт на главную — то есть на About текущего языка. */}
+      <Link
+        href={href(locale, "about")}
+        className={styles.avatar}
+        aria-label={dict.homeLink}
+      >
         <Image
           src={profile.avatar.src}
           alt={profile.avatar.alt[locale]}
@@ -15,7 +24,7 @@ export function Profile({ locale }: { locale: Locale }) {
           className={styles.avatarImg}
           priority
         />
-      </div>
+      </Link>
       <div className={styles.nameEmail}>
         <p className={styles.name}>{profile.name[locale]}</p>
         <p className={styles.email}>{profile.email}</p>

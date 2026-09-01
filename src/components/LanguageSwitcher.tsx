@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { t, type Locale } from "@/lib/i18n";
+import { href, type Section } from "@/lib/routes";
 import styles from "./LanguageSwitcher.module.css";
 
 /**
@@ -19,19 +20,17 @@ export function LanguageSwitcher({
   slot,
 }: {
   locale: Locale;
-  section: "about" | "work" | "notes";
+  section: Section;
   slot?: number;
 }) {
   const dict = t(locale);
   const style =
-    slot === undefined
-      ? undefined
-      : ({ "--index-1": slot } as CSSProperties);
+    slot === undefined ? undefined : ({ "--index-1": slot } as CSSProperties);
 
   return (
     <div className={styles.switcher} style={style}>
       <Link
-        href={`/en/${section}`}
+        href={href("en", section)}
         className={locale === "en" ? styles.linkActive : styles.link}
         aria-current={locale === "en" ? "page" : undefined}
         hrefLang="en"
@@ -40,7 +39,7 @@ export function LanguageSwitcher({
         {dict.lang.en}
       </Link>
       <Link
-        href={`/ru/${section}`}
+        href={href("ru", section)}
         className={locale === "ru" ? styles.linkActive : styles.link}
         aria-current={locale === "ru" ? "page" : undefined}
         hrefLang="ru"

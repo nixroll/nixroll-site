@@ -19,6 +19,8 @@ export const dictionary = {
     },
     loadMore: (n: number) => `Load more (${n})`,
     lang: { en: "En", ru: "Ru" },
+    // Подпись для читалок экрана на ссылке-аватаре: на странице она не видна.
+    homeLink: "Home",
     htmlLang: "en",
   },
   ru: {
@@ -33,6 +35,7 @@ export const dictionary = {
     },
     loadMore: (n: number) => `Показать ещё (${n})`,
     lang: { en: "En", ru: "Ru" },
+    homeLink: "На главную",
     htmlLang: "ru",
   },
 } as const;

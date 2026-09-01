@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n";
+import { href, type Section } from "@/lib/routes";
 
 /**
  * Базовый адрес сайта. По умолчанию боевой домен; для превью-сборки
@@ -40,8 +41,6 @@ const COPY = {
   },
 } as const;
 
-export type Section = "about" | "work" | "notes";
-
 /**
  * Полный набор метаданных страницы. Собирается целиком в одном месте:
  * Next заменяет объект openGraph родителя целиком, а не сливает по полям,
@@ -49,7 +48,7 @@ export type Section = "about" | "work" | "notes";
  */
 export function pageMetadata(locale: Locale, section: Section): Metadata {
   const copy = COPY[locale];
-  const path = `/${locale}/${section}`;
+  const path = href(locale, section);
 
   return {
     metadataBase: new URL(siteUrl),
@@ -58,8 +57,8 @@ export function pageMetadata(locale: Locale, section: Section): Metadata {
     alternates: {
       canonical: absolute(path),
       languages: {
-        en: absolute(`/en/${section}`),
-        ru: absolute(`/ru/${section}`),
+        en: absolute(href("en", section)),
+        ru: absolute(href("ru", section)),
       },
     },
     openGraph: {

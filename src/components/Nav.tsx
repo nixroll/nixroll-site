@@ -1,31 +1,21 @@
 import Link from "next/link";
 import { t, type Locale } from "@/lib/i18n";
+import { SECTIONS, href, type Section } from "@/lib/routes";
 import styles from "./Nav.module.css";
 
-export function Nav({
-  locale,
-  active,
-}: {
-  locale: Locale;
-  active: "about" | "work" | "notes";
-}) {
+export function Nav({ locale, active }: { locale: Locale; active: Section }) {
   const dict = t(locale);
-  const items: { key: "about" | "work" | "notes"; href: string }[] = [
-    { key: "about", href: `/${locale}/about` },
-    { key: "work", href: `/${locale}/work` },
-    { key: "notes", href: `/${locale}/notes` },
-  ];
 
   return (
     <nav className={styles.nav} aria-label={dict.nav.about}>
-      {items.map((item) => (
+      {SECTIONS.map((section) => (
         <Link
-          key={item.key}
-          href={item.href}
-          className={item.key === active ? styles.linkActive : styles.link}
-          aria-current={item.key === active ? "page" : undefined}
+          key={section}
+          href={href(locale, section)}
+          className={section === active ? styles.linkActive : styles.link}
+          aria-current={section === active ? "page" : undefined}
         >
-          {dict.nav[item.key]}
+          {dict.nav[section]}
         </Link>
       ))}
     </nav>
