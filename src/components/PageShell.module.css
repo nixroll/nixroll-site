@@ -16,15 +16,18 @@
   max-width: 720px;
   min-width: 0;
   padding: 0 32px;
+
+  /* Шаг между стартами соседних элементов — единственная ручка настройки. */
+  --stagger: 110ms;
 }
 
 /*
  * Появление содержимого — двухуровневая ступенька, как в референсе.
  *
  * Уровень 1: секции (блоки страницы начиная с третьего) проявляются из
- *   лёгкого размытия друг за другом с шагом 60ms.
+ *   лёгкого размытия друг за другом.
  * Уровень 2: элементы внутри секции всплывают снизу на 12px, каждый со
- *   своим шагом 60ms поверх задержки своей секции — то есть задержки
+ *   своим шагом поверх задержки родителя — то есть задержки
  *   складываются, и внутри секции элементы стартуют вразнобой.
  *
  * Шапка и навигация одинаковы на всех страницах и остаются неподвижными.
@@ -35,73 +38,74 @@
 /* --- Уровень 1: секции --- */
 
 .container > *:nth-child(n + 3) {
+  --delay-1: calc(var(--index-1, 0) * var(--stagger));
   animation: sectionReveal 700ms ease-out both;
-  animation-delay: var(--delay, 0ms);
+  animation-delay: var(--delay-1);
 }
 
 .container > *:nth-child(3) {
-  --delay: 0ms;
+  --index-1: 0;
 }
 .container > *:nth-child(4) {
-  --delay: 60ms;
+  --index-1: 1;
 }
 .container > *:nth-child(5) {
-  --delay: 120ms;
+  --index-1: 2;
 }
 .container > *:nth-child(6) {
-  --delay: 180ms;
+  --index-1: 3;
 }
 .container > *:nth-child(7) {
-  --delay: 240ms;
+  --index-1: 4;
 }
 .container > *:nth-child(8) {
-  --delay: 300ms;
+  --index-1: 5;
 }
 
 /* --- Уровень 2: элементы внутри секции --- */
 
 .container > *:nth-child(n + 3) > * {
   /* задержка секции + собственная ступенька элемента */
-  --delay-2: calc(var(--delay, 0ms) + var(--index, 0) * 60ms);
+  --delay-2: calc(var(--delay-1, 0ms) + var(--index-2, 0) * var(--stagger));
   animation: itemReveal 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: var(--delay-2);
 }
 
 .container > *:nth-child(n + 3) > *:nth-child(1) {
-  --index: 0;
+  --index-2: 0;
 }
 .container > *:nth-child(n + 3) > *:nth-child(2) {
-  --index: 1;
+  --index-2: 1;
 }
 .container > *:nth-child(n + 3) > *:nth-child(3) {
-  --index: 2;
+  --index-2: 2;
 }
 .container > *:nth-child(n + 3) > *:nth-child(4) {
-  --index: 3;
+  --index-2: 3;
 }
 .container > *:nth-child(n + 3) > *:nth-child(5) {
-  --index: 4;
+  --index-2: 4;
 }
 .container > *:nth-child(n + 3) > *:nth-child(6) {
-  --index: 5;
+  --index-2: 5;
 }
 .container > *:nth-child(n + 3) > *:nth-child(7) {
-  --index: 6;
+  --index-2: 6;
 }
 .container > *:nth-child(n + 3) > *:nth-child(8) {
-  --index: 7;
+  --index-2: 7;
 }
 .container > *:nth-child(n + 3) > *:nth-child(9) {
-  --index: 8;
+  --index-2: 8;
 }
 .container > *:nth-child(n + 3) > *:nth-child(10) {
-  --index: 9;
+  --index-2: 9;
 }
 .container > *:nth-child(n + 3) > *:nth-child(11) {
-  --index: 10;
+  --index-2: 10;
 }
 .container > *:nth-child(n + 3) > *:nth-child(12) {
-  --index: 11;
+  --index-2: 11;
 }
 
 /*
@@ -115,7 +119,7 @@
  */
 
 .container > *:nth-child(n + 3) > [data-reveal] > * {
-  --delay-3: calc(var(--delay-2, 0ms) + var(--index-3, 0) * 60ms);
+  --delay-3: calc(var(--delay-2, 0ms) + var(--index-3, 0) * var(--stagger));
   animation: itemReveal 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: var(--delay-3);
 }
@@ -140,7 +144,7 @@
 }
 
 .container > *:nth-child(n + 3) > [data-reveal] > [data-reveal] > * {
-  --delay-4: calc(var(--delay-3, 0ms) + var(--index-4, 0) * 60ms);
+  --delay-4: calc(var(--delay-3, 0ms) + var(--index-4, 0) * var(--stagger));
   animation: itemReveal 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: var(--delay-4);
 }
