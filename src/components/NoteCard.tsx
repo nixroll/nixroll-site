@@ -58,7 +58,8 @@ export function NoteCard({
         </div>
       </div>
       {note.image ? (
-        <div className={styles.imageWrap}>
+        /* Третья позиция в очереди появления: после заголовка и текста. */
+        <div className={styles.imageWrap} data-reveal-index="2">
           <Image
             src={note.image.url}
             alt={note.image.alt}
