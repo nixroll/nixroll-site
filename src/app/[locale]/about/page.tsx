@@ -7,6 +7,9 @@ import { AboutBody } from "@/components/AboutBody";
 import { Connect } from "@/components/Connect";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { LOCALES, isLocale } from "@/lib/i18n";
+import { slotAfter } from "@/lib/reveal";
+import { about } from "@/content/about";
+import { CONNECT_ORDER } from "@/content/profile";
 import { pageMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
@@ -32,13 +35,20 @@ export default async function AboutPage({
   if (!isLocale(localeParam)) notFound();
   const locale = localeParam;
 
+  // Хвост очереди появления: последний абзац текста и последняя строка
+  // контактов. Переключатель языка встаёт на шаг позже обоих.
+  const languageSlot = slotAfter(
+    about[locale].paragraphs.length - 1,
+    1 + CONNECT_ORDER.length // секция контактов идёт второй, в ней подпись + ссылки
+  );
+
   return (
     <PageShell>
       <Profile locale={locale} />
       <Nav locale={locale} active="about" />
       <AboutBody locale={locale} />
       <Connect locale={locale} />
-      <LanguageSwitcher locale={locale} section="about" />
+      <LanguageSwitcher locale={locale} section="about" slot={languageSlot} />
     </PageShell>
   );
 }

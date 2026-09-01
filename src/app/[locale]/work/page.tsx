@@ -9,6 +9,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { LOCALES, isLocale } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/metadata";
 import { work } from "@/content/work";
+import { slotAfter } from "@/lib/reveal";
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -33,6 +34,10 @@ export default async function WorkPage({
   if (!isLocale(localeParam)) notFound();
   const locale = localeParam;
 
+  // В каждом месте работы три части (название с должностью, список,
+  // строка с локацией) — они добавляют к хвосту ещё два шага.
+  const languageSlot = slotAfter(work.length - 1 + 2);
+
   return (
     <PageShell>
       <Profile locale={locale} />
@@ -42,7 +47,7 @@ export default async function WorkPage({
           <WorkRow key={index} row={row} locale={locale} />
         ))}
       </div>
-      <LanguageSwitcher locale={locale} section="work" />
+      <LanguageSwitcher locale={locale} section="work" slot={languageSlot} />
     </PageShell>
   );
 }
