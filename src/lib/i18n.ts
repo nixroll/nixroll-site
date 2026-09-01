@@ -10,7 +10,13 @@ export const dictionary = {
   en: {
     nav: { about: "About", work: "Work", notes: "Notes" },
     connectLabel: "Connect",
-    connect: { email: "Email", twitter: "Twitter", linkedin: "LinkedIn" },
+    connect: {
+      telegram: "Telegram",
+      linkedin: "LinkedIn",
+      twitter: "Twitter",
+      email: "Email",
+      cv: "CV (PDF)",
+    },
     loadMore: (n: number) => `Load more (${n})`,
     lang: { en: "En", ru: "Ru" },
     htmlLang: "en",
@@ -18,7 +24,13 @@ export const dictionary = {
   ru: {
     nav: { about: "О себе", work: "Работа", notes: "Заметки" },
     connectLabel: "Контакты",
-    connect: { email: "Email", twitter: "Twitter", linkedin: "LinkedIn" },
+    connect: {
+      telegram: "Telegram",
+      linkedin: "LinkedIn",
+      twitter: "Twitter",
+      email: "Email",
+      cv: "CV (PDF)",
+    },
     loadMore: (n: number) => `Показать ещё (${n})`,
     lang: { en: "En", ru: "Ru" },
     htmlLang: "ru",
