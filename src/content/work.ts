@@ -1,30 +1,53 @@
+/**
+ * Содержимое страницы «Работа». Тексты согласованы и приведены дословно по ТЗ
+ * «Страница „Работа“ / Work: полные тексты, версия 3» от 1 сентября 2026.
+ * Править, сокращать, переставлять и дополнять их нельзя.
+ *
+ * Неразрывные пробелы записаны escape-последовательностью \u00A0: сам символ
+ * невидим и при копировании молча превращается в обычный пробел. На русской
+ * версии их ровно 35 — 5 + 7 + 10 + 7 + 3 + 3 по блокам. По этой же причине
+ * тексты не прогоняются через applyRuTypography: расстановка зафиксирована
+ * ТЗ, автоматика добавила бы лишние (в том числе внутри дат «2022 - сейчас»).
+ *
+ * Даты: диапазон оформляется дефисом с пробелами, короткое тире не
+ * подставляется. У Kinez один год без диапазона — это не опечатка.
+ * Числа по нормам своего языка: 50 000 в русской версии, 50,000 в английской.
+ *
+ * Файл собран скриптом, чтобы неразрывные пробелы нельзя было потерять при
+ * ручном наборе. Правки вносить прямо здесь.
+ */
+
 export type WorkRow = {
   name: { en: string; ru: string };
   role: { en: string; ru: string };
   bullets: { en: string[]; ru: string[] };
   meta: { en: string; ru: string };
+  /** У блока об образовании вместо трёх буллетов один абзац. */
   isEducation?: boolean;
 };
 
 export const work: WorkRow[] = [
   {
     name: { en: "SRG Plus", ru: "SRG Plus" },
-    role: { en: "Product Lead", ru: "Product Lead" },
+    role: {
+      en: "Product Lead",
+      ru: "Product Lead",
+    },
     bullets: {
       en: [
-        "Built from zero a SaaS product for managing social media content inside a single application: formed the team, set up the development process and took the application through Apple review to the App Store.",
-        "Launched the iOS application and the web version in parallel, reaching 50 active corporate clients and around 10,000 users within the first year.",
-        "Own the product in full: strategy, roadmap, team, release cycle and monetization.",
+        "Took a new SaaS content management product to market: a cross-platform application and a web version, with the team and the development process built from scratch.",
+        "Reached 50 corporate clients on paid subscriptions within the first year of launch, opening the product’s first revenue stream.",
+        "Own the product end to end: strategy and development priorities, product metrics, team composition and process, the release cycle and subscription economics.",
       ],
       ru: [
-        "Создание с нуля SaaS-продукта для управления контентом в социальных сетях внутри одного приложения: формирование команды, постановка процессов разработки и вывод приложения в App Store через ревью Apple.",
-        "Параллельный выпуск iOS-приложения и веб-версии, за первый год после запуска 50 активных корпоративных клиентов и около 10 000 пользователей.",
-        "Полная ответственность за продукт: стратегия, роадмап, команда, релизный цикл и монетизация.",
+        "Вывод на рынок нового SaaS-продукта для управления контентом: кроссплатформенное приложение и\u00A0веб-версия, собственная команда и\u00A0выстроенный процесс разработки.",
+        "Привлечение 50 корпоративных клиентов на платной подписке за первый год после запуска, первая выручка продукта.",
+        "Полная ответственность за продукт: стратегия и\u00A0приоритеты развития, продуктовые метрики, состав и\u00A0процессы команды, релизный цикл и\u00A0экономика подписки.",
       ],
     },
     meta: {
-      en: "Los Angeles, United States · Remote · 2024 - now",
-      ru: "Лос-Анджелес, США · Удалённо · 2024 - сейчас",
+      en: "Los Angeles, United States · Remote · 2022 - now",
+      ru: "Лос-Анджелес, США · Удалённо · 2022 - сейчас",
     },
   },
   {
@@ -35,39 +58,42 @@ export const work: WorkRow[] = [
     },
     bullets: {
       en: [
-        "Led a team of 10 and a portfolio of five client products, each with its own development cycle and release schedule.",
-        "Introduced new quality control systems across the studio’s delivery process, extending average client retention by a year.",
+        "Led the development team and a portfolio of five client products, each with its own development cycle and release schedule.",
+        "Introduced quality control systems across the studio’s delivery process, growing average client retention from one year to two.",
         "Launched and led SRG Plus, a product incubated inside the studio, moving the company from client services into its own product.",
       ],
       ru: [
-        "Руководство командой из 10 человек и портфелем из пяти клиентских продуктов, каждый с собственным циклом разработки и графиком релизов.",
-        "Внедрение новых систем контроля качества в процессы студии, увеличившее средний срок удержания клиентов на год.",
-        "Запуск и руководство SRG Plus, продуктом, выросшим внутри студии: переход компании от клиентской разработки к собственному продукту.",
+        "Управление командой разработки и\u00A0портфелем из пяти клиентских продуктов, каждый с\u00A0собственным циклом разработки и\u00A0графиком релизов.",
+        "Внедрение систем контроля качества в\u00A0процессы студии: средний срок удержания клиента вырос с\u00A0года до двух.",
+        "Запуск и\u00A0руководство SRG Plus, продуктом, выросшим внутри студии: переход компании от клиентской разработки к\u00A0собственному продукту.",
       ],
     },
     meta: {
-      en: "Los Angeles, United States · Remote · 2021 - 2024",
-      ru: "Лос-Анджелес, США · Удалённо · 2021 - 2024",
+      en: "Los Angeles, United States · Remote · 2021 - 2022",
+      ru: "Лос-Анджелес, США · Удалённо · 2021 - 2022",
     },
   },
   {
     name: { en: "Kinez", ru: "Kinez" },
-    role: { en: "Project Manager", ru: "Project Manager" },
+    role: {
+      en: "Project Manager",
+      ru: "Project Manager",
+    },
     bullets: {
       en: [
-        "Won a competitive tender and delivered the MVP of Kinez App, a mobile controller for a prosthetic knee module, in three months on iOS and Android simultaneously.",
-        "Scaled the product from MVP to full public release by month eight, then transferred the product, team and documentation to the owner.",
-        "Delivered a hardware connected medtech product at a Skolkovo resident company, coordinating mobile development with the prosthetics engineering team.",
+        "Won a competitive tender at a Skolkovo resident company to build a mobile product for controlling a prosthetic knee module.",
+        "Launched the application from zero in three months on iOS and Android, took it to public release by month eight and handed the product to the owner.",
+        "Ran two teams in two cities in sync: software in Minsk and hardware in Moscow.",
       ],
       ru: [
-        "Победа в тендере и вывод MVP приложения Kinez App для управления коленным модулем протеза за три месяца, одновременно на iOS и Android.",
-        "Развитие продукта от MVP до полного публичного релиза к восьмому месяцу с последующей передачей продукта, команды и документации собственнику.",
-        "Ведение медтех-продукта в связке с аппаратной частью в компании-резиденте Сколково, координация мобильной разработки с инженерами протеза.",
+        "Победа в\u00A0тендере компании-резидента Сколково на разработку мобильного продукта для управления коленным модулем протеза.",
+        "Запуск приложения с\u00A0нуля за три месяца, сразу на iOS и\u00A0Android, и\u00A0доведение до публичного релиза к\u00A0восьмому месяцу с\u00A0передачей продукта собственнику.",
+        "Синхронная организация работы двух команд в\u00A0двух городах: программной в\u00A0Минске и\u00A0аппаратной в\u00A0Москве.",
       ],
     },
     meta: {
-      en: "Moscow, Russia · Project · 2019 - 2020",
-      ru: "Москва, Россия · Проект · 2019 - 2020",
+      en: "Moscow, Russia · Project · 2021",
+      ru: "Москва, Россия · Проект · 2021",
     },
   },
   {
@@ -78,57 +104,57 @@ export const work: WorkRow[] = [
     },
     bullets: {
       en: [
-        "Delivered operational banking software for Banco Santander at a Madrid based enterprise software company, joining remotely and relocating to Madrid within three months.",
-        "Launched a corporate calculator for Banco Santander, a product serving more than 50,000 users.",
-        "Moved from design into project management, leading a team of 12 and establishing business processes, delivery metrics and the working protocol between the bank and engineering.",
+        "Delivered operational banking software for Banco Santander at a Spanish enterprise software company: joined remotely and relocated to Madrid within three months.",
+        "Launched a credit calculator for European car dealers built on Banco Santander’s lending system, a product serving more than 50,000 users.",
+        "Moved from design into project management: established business processes and delivery metrics, and ran the product’s integration into partner banks.",
       ],
       ru: [
-        "Проектирование и разработка операционного ПО для банковской системы Banco Santander в мадридской компании корпоративной разработки, старт на удалённой позиции с переездом в Мадрид на третий месяц.",
-        "Запуск корпоративного калькулятора для Banco Santander, продукта более чем для 50 000 пользователей.",
-        "Переход из дизайна в проектное управление: руководство командой из 12 человек, постановка бизнес-процессов, метрик поставки и регламента взаимодействия между банком и разработкой.",
+        "Проектирование и\u00A0разработка операционного ПО для банковской системы Banco Santander в\u00A0испанской ИТ-компании: старт удалённо, переезд в\u00A0Мадрид на третий месяц.",
+        "Запуск кредитного калькулятора для европейских автодилеров на базе кредитной системы Banco Santander, продукта более чем для 50\u00A0000 пользователей.",
+        "Переход из дизайна в\u00A0проектное управление: постановка бизнес-процессов и\u00A0метрик поставки, управление интеграцией продукта в\u00A0банки-партнёры.",
       ],
     },
     meta: {
-      en: "Madrid, Spain · Office · 2019 - 2020",
-      ru: "Мадрид, Испания · Офис · 2019 - 2020",
+      en: "Madrid, Spain · Office · 2019 - 2021",
+      ru: "Мадрид, Испания · Офис · 2019 - 2021",
     },
   },
   {
     name: { en: "United Company", ru: "United Company" },
-    role: { en: "UX/UI Designer", ru: "UX/UI Designer" },
+    role: {
+      en: "UX/UI Designer",
+      ru: "UX/UI Designer",
+    },
     bullets: {
       en: [
         "Designed the interfaces of a corporate CRM system for warehouse volume control and operations management.",
-        "Delivered software for logistics, operational management and customer account portals across the company’s enterprise product line.",
+        "Delivered interface design across the company’s enterprise product line: logistics, operational management and customer account portals.",
         "Designed a new company product, an electric vehicle charging service, later brought to market.",
       ],
       ru: [
-        "Проектирование интерфейсов корпоративной CRM-системы для контроля складских объёмов и управления операциями.",
-        "Разработка ПО для логистики, операционного менеджмента и личных кабинетов пользователей в линейке enterprise-продуктов компании.",
+        "Проектирование интерфейсов корпоративной CRM-системы для контроля складских объёмов и\u00A0управления операциями.",
+        "Интерфейсы для логистики, операционного менеджмента и\u00A0личных кабинетов пользователей в\u00A0линейке enterprise-продуктов компании.",
         "Проектирование нового продукта компании: сервиса электрозарядных станций, впоследствии выведенного на рынок.",
       ],
     },
     meta: {
-      en: "Minsk, Belarus · Office · 2016 - 2019",
-      ru: "Минск, Беларусь · Офис · 2016 - 2019",
+      en: "Minsk, Belarus · Office · 2016 - 2018",
+      ru: "Минск, Беларусь · Офис · 2016 - 2018",
     },
   },
   {
     isEducation: true,
-    name: {
-      en: "Belarusian State University",
-      ru: "Белорусский государственный университет",
-    },
+    name: { en: "Belarusian State University", ru: "Белорусский государственный университет" },
     role: {
-      en: "Faculty of Journalism, BA in Information and Communication",
-      ru: "Факультет журналистики, специальность «Информация и коммуникация»",
+      en: "Faculty of Journalism, specialization in PR Management",
+      ru: "Факультет журналистики, специализация «PR-менеджмент»",
     },
     bullets: {
       en: [
-        "A degree at the intersection of strategic communications, information management and reputation: communication strategy, media and public relations.",
+        "Communications, information and organizational reputation: audience research, planning and evaluation of communication campaigns.",
       ],
       ru: [
-        "Специальность на стыке стратегических коммуникаций, работы с информацией и управления репутацией: коммуникационные стратегии, медиа, связи с общественностью.",
+        "Коммуникации, работа с\u00A0информацией и\u00A0репутацией организаций: исследование аудитории, планирование и\u00A0оценка коммуникационных кампаний.",
       ],
     },
     meta: {

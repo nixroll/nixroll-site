@@ -1,12 +1,13 @@
 import type { WorkRow as WorkRowType } from "@/content/work";
-import { applyRuTypography } from "@/lib/typography";
 import type { Locale } from "@/lib/i18n";
 import styles from "./WorkRow.module.css";
 
-function tx(text: string, locale: Locale) {
-  return locale === "ru" ? applyRuTypography(text) : text;
-}
-
+/**
+ * Тексты выводятся как есть: расстановка неразрывных пробелов зафиксирована
+ * в ТЗ (ровно 35 на русской странице), поэтому applyRuTypography здесь не
+ * применяется. Автоматика добавила бы лишние — в том числе внутри дат
+ * «2022 - сейчас», где по ТЗ нужен обычный дефис с пробелами.
+ */
 export function WorkRow({
   row,
   locale,
@@ -21,18 +22,18 @@ export function WorkRow({
     <div className={styles.row} data-reveal>
       <div className={styles.nameRole}>
         <p className={styles.name}>{row.name[locale]}</p>
-        <p className={styles.role}>{tx(row.role[locale], locale)}</p>
+        <p className={styles.role}>{row.role[locale]}</p>
       </div>
       {row.isEducation ? (
-        <p className={styles.paragraph}>{tx(bullets[0], locale)}</p>
+        <p className={styles.paragraph}>{bullets[0]}</p>
       ) : (
         <ul className={styles.bullets}>
           {bullets.map((bullet, index) => (
-            <li key={index}>{tx(bullet, locale)}</li>
+            <li key={index}>{bullet}</li>
           ))}
         </ul>
       )}
-      <p className={styles.meta}>{tx(row.meta[locale], locale)}</p>
+      <p className={styles.meta}>{row.meta[locale]}</p>
     </div>
   );
 }

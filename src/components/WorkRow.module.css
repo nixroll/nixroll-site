@@ -50,6 +50,13 @@
 .bullets li {
   margin: 0 0 0 24px;
   line-height: normal;
+
+  /*
+   * pretty убирает висячие слова в конце буллета. balance по ТЗ не
+   * применяется: в Chrome он работает максимум на шести строках, и на
+   * длинных буллетах отключился бы, дав им другую ширину.
+   */
+  text-wrap: pretty;
 }
 
 .paragraph {
@@ -58,6 +65,7 @@
   color: var(--color-primary);
   font-weight: 400;
   line-height: normal;
+  text-wrap: pretty;
 }
 
 .meta {
