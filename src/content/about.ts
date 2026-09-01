@@ -1,14 +1,59 @@
-export const about = {
+/**
+ * Текст страницы «О себе». Согласован с заказчиком построчно — формулировки
+ * не правятся (ТЗ «Обновление текста страницы „О себе“», 1 сентября 2026).
+ *
+ * Неразрывные пробелы записаны escape-последовательностью \u00A0, а не самим
+ * символом: он невидим и при копировании через редакторы, мессенджеры и буфер
+ * обмена молча превращается в обычный пробел. В таком виде потеря сразу видна
+ * в исходнике. По этой же причине текст «О себе» не прогоняется через
+ * applyRuTypography: расстановка здесь зафиксирована ТЗ — ровно 20 пробелов,
+ * 6 + 9 + 5 по абзацам, — а автоматика могла бы добавить лишние.
+ *
+ * Правило ТЗ: связываются только односимвольные слова (я, в, с, и, а, к, о,
+ * у). Двухбуквенные предлоги (до, на, от, из, по, за) намеренно НЕ
+ * связываются — на колонке 320px это давало слишком рваный правый край.
+ *
+ * Файл собран скриптом, чтобы неразрывные пробелы нельзя было потерять при
+ * ручном наборе. Правки вносить прямо здесь.
+ */
+
+/** Кусок абзаца: обычный текст или ссылка внутри него. */
+export type AboutSegment = string | { text: string; href: string };
+
+/** Единственная ссылка внутри текста «О себе» (ТЗ 2.2). */
+const SRG_PLUS = { text: "SRG Plus", href: "https://srgplus.app/" };
+
+export const about: Record<"en" | "ru", { paragraphs: AboutSegment[][] }> = {
   en: {
+    // Неразрывные пробелы в английской версии не используются: в английской
+    // типографике предлог в конце строки допустим.
     paragraphs: [
-      "I lead the creation of digital products, from the first definition of the problem to the moment they reach the market. One area I have returned to throughout my career is banking systems and financial infrastructure.",
-      "My interest lies in technology and engineering culture, in how an idea becomes a system people rely on every day. I hold to the discipline sport taught me: results come from consistency, not from a single burst of effort. I apply the same principle to products and to the teams that build them.",
+      [
+        "I am a Product Lead with six years in product management. I run the development team at ",
+        SRG_PLUS,
+        " and build the company’s product strategy and its systems for managing teams.",
+      ],
+      [
+        "My interest lies in technology and engineering culture, in how an idea becomes a system people rely on every day. I am equally interested in launching products from zero and in reshaping ones that already run: in both cases the task is the same, taking the product to a measurable result. Most of my attention goes to how a team is set up and how decisions are made inside it.",
+      ],
+      [
+        "What interests me is the intersection of technology and finance in modern digital products, and I am looking at product roles in a large technology or financial company.",
+      ],
     ],
   },
   ru: {
     paragraphs: [
-      "Руковожу созданием цифровых продуктов: от постановки задачи до выхода на рынок. Отдельное направление, к которому я возвращаюсь на протяжении всей карьеры, это банковские системы и финансовая инфраструктура.",
-      "Мой интерес лежит в технологиях и инженерной культуре, в том, как замысел становится системой, которой пользуются каждый день. Придерживаюсь дисциплины, которой меня научил спорт: результат определяется режимом, а не отдельным усилием. Тот же принцип я применяю к продуктам и командам.",
+      [
+        "Я\u00A0Product Lead с\u00A0шестью годами опыта в\u00A0продуктовом управлении. Руковожу командой разработки в\u00A0",
+        SRG_PLUS,
+        " и\u00A0выстраиваю внутри компании продуктовую стратегию и\u00A0систему управления командами.",
+      ],
+      [
+        "Мой интерес лежит в\u00A0технологиях и\u00A0инженерной культуре, в\u00A0том, как замысел становится системой, которой пользуются каждый день. Мне одинаково интересно запускать продукты с\u00A0нуля и\u00A0перестраивать те, что уже работают: в\u00A0обоих случаях задача одна, довести продукт до измеримого результата. Больше всего внимания я\u00A0уделяю тому, как устроена команда и\u00A0как в\u00A0ней принимаются решения.",
+      ],
+      [
+        "Мне интересно пересечение технологий и\u00A0финансов в\u00A0современных цифровых продуктах, и\u00A0я\u00A0рассматриваю развитие продукта в\u00A0крупной технологической или финансовой компании.",
+      ],
     ],
   },
 };

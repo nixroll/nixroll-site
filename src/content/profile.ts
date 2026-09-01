@@ -12,6 +12,8 @@ export const CONNECT_ORDER = [
 
 export type ConnectKey = (typeof CONNECT_ORDER)[number];
 
+type Locale = "en" | "ru";
+
 export const profile = {
   name: {
     en: "NIKITA EFIMCHIK",
@@ -22,13 +24,23 @@ export const profile = {
     src: "/images/avatar.jpg",
     alt: { en: "Portrait of Nikita Efimchik", ru: "Портрет Никиты Ефимчика" },
   },
-  // TODO(nikita): файла резюме ещё нет — положить PDF в public/cv/ под этим
-  // же именем, иначе ссылка ведёт в никуда.
+  // TODO(nikita): самих PDF ещё нет — положить оба файла в public/cv/ под
+  // этими именами, иначе ссылки ведут в никуда.
+  //
+  // Адреса постоянные: файл в дальнейшем перезаписывается по тому же URL,
+  // чтобы ссылки в ранее отправленных откликах продолжали работать.
   connect: {
     telegram: "https://t.me/nixroll",
     linkedin: "https://www.linkedin.com/in/nixrollco",
     twitter: "https://x.com/nixrollco",
     email: "mailto:hi@nixroll.co",
-    cv: "/cv/nikita-efimchik.pdf",
-  } satisfies Record<ConnectKey, string>,
+    // Резюме своё на каждый язык: русская страница отдаёт русский файл.
+    cv: { en: "/cv/nikita-efimchik-cv.pdf", ru: "/cv/nikita-efimchik-rezume.pdf" },
+  } satisfies Record<ConnectKey, string | Record<Locale, string>>,
 };
+
+/** Адрес контакта: у резюме он свой на каждом языке, у остальных общий. */
+export function connectHref(key: ConnectKey, locale: Locale): string {
+  const value = profile.connect[key];
+  return typeof value === "string" ? value : value[locale];
+}

@@ -31,7 +31,9 @@ export const dictionary = {
       linkedin: "LinkedIn",
       twitter: "Twitter",
       email: "Email",
-      cv: "CV (PDF)",
+      // Вся навигация и контакты на русской версии переведены — английская
+      // аббревиатура CV выпадала бы из ряда.
+      cv: "Резюме (PDF)",
     },
     loadMore: (n: number) => `Показать ещё (${n})`,
     lang: { en: "En", ru: "Ru" },
