@@ -31,31 +31,31 @@
     blockFade 700ms ease-out both;
 }
 
-/* Шапка (аватар, имя, почта) одинакова на всех страницах — она статична. */
-.container > *:first-child {
+/*
+ * Шапка (аватар, имя, почта) и навигация одинаковы на всех страницах —
+ * они остаются неподвижными, анимируется только содержимое раздела.
+ */
+.container > *:nth-child(-n + 2) {
   animation: none;
 }
 
-.container > *:nth-child(2) {
+.container > *:nth-child(3) {
   animation-delay: 0ms;
 }
-.container > *:nth-child(3) {
+.container > *:nth-child(4) {
   animation-delay: 60ms;
 }
-.container > *:nth-child(4) {
+.container > *:nth-child(5) {
   animation-delay: 120ms;
 }
-.container > *:nth-child(5) {
+.container > *:nth-child(6) {
   animation-delay: 180ms;
 }
-.container > *:nth-child(6) {
+.container > *:nth-child(7) {
   animation-delay: 240ms;
 }
-.container > *:nth-child(7) {
-  animation-delay: 300ms;
-}
 .container > *:nth-child(8) {
-  animation-delay: 360ms;
+  animation-delay: 300ms;
 }
 
 @keyframes blockRise {
