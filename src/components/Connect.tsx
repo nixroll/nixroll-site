@@ -10,16 +10,14 @@ export function Connect({ locale }: { locale: Locale }) {
       <p className={styles.label}>{dict.connectLabel}</p>
       {CONNECT_ORDER.map((key) => {
         const href = connectHref(key, locale);
-        // Почта открывается в почтовом клиенте, резюме сразу скачивается
-        // атрибутом download (без промежуточного открытия во вкладке),
-        // остальное — в новой вкладке.
-        const external = key !== "email" && key !== "cv";
+        // Почта открывается в почтовом клиенте, остальное — в новой вкладке
+        // (резюме теперь тоже: ссылка ведёт на Google Drive).
+        const external = key !== "email";
         return (
           <a
             key={key}
             className={styles.link}
             href={href}
-            {...(key === "cv" ? { download: true } : {})}
             {...(external
               ? { target: "_blank", rel: "noreferrer noopener" }
               : {})}

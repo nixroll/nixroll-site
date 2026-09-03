@@ -24,16 +24,17 @@ export const profile = {
     src: "/images/avatar.jpg",
     alt: { en: "Portrait of Nikita Efimchik", ru: "Портрет Никиты Ефимчика" },
   },
-  // PDF лежат в public/cv/. Адреса постоянные: файл в дальнейшем
-  // перезаписывается по тому же URL, чтобы ссылки в ранее отправленных
-  // откликах продолжали работать.
   connect: {
     telegram: "https://t.me/nixroll",
     linkedin: "https://www.linkedin.com/in/nixrollco",
     twitter: "https://x.com/nixrollco",
     email: "mailto:hi@nixroll.co",
-    // Резюме своё на каждый язык: русская страница отдаёт русский файл.
-    cv: { en: "/cv/nikita-efimchik-cv.pdf", ru: "/cv/nikita-efimchik-rezume.pdf" },
+    // Резюме своё на каждый язык: русская страница отдаёт русскую версию,
+    // хранится на Google Drive и открывается там же, в новой вкладке.
+    cv: {
+      en: "https://drive.google.com/file/d/1_pJqS8xp9_4m2XnULKLmvzQMKTFA7L1p/view?usp=sharing",
+      ru: "https://drive.google.com/file/d/1oavTQ5TnaCoaCEQotO9xIq0XlEKcQdi0/view?usp=sharing",
+    },
   } satisfies Record<ConnectKey, string | Record<Locale, string>>,
 };
 
