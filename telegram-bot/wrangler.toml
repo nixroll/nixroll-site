@@ -10,7 +10,7 @@ compatibility_date = "2026-09-01"
 #
 # Обычные переменные (не секретные, можно смотреть в этом файле):
 [vars]
-ALLOWED_CHAT_ID = "REPLACE_WITH_YOUR_TELEGRAM_USER_ID"
+ALLOWED_CHAT_ID = "7618431323"
 GITHUB_REPO = "nixroll/nixroll-site"
 GITHUB_BRANCH = "master"
 SITE_URL = "https://nixroll.co"
@@ -19,4 +19,4 @@ SITE_URL = "https://nixroll.co"
 # id подставляется после `wrangler kv namespace create NOTES_BOT_KV`.
 [[kv_namespaces]]
 binding = "NOTES_BOT_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "755fa6c9fa404ab097c0ab3e64bb8e33"
