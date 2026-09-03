@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# telegram-bot (Cloudflare Worker, отдельный package.json)
+telegram-bot/node_modules
+telegram-bot/.wrangler
+telegram-bot/package-lock.json

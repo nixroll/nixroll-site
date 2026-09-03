@@ -1,0 +1,22 @@
+name = "nixroll-notes-bot"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+
+# Секреты (задаются один раз, НЕ здесь, а через `wrangler secret put`):
+#   TELEGRAM_BOT_TOKEN     — токен бота от @BotFather
+#   TELEGRAM_WEBHOOK_SECRET — случайная строка, её же передать в setWebhook
+#   GITHUB_TOKEN           — fine-grained PAT, Contents: Read and write
+#                            только на репозиторий nixroll/nixroll-site
+#
+# Обычные переменные (не секретные, можно смотреть в этом файле):
+[vars]
+ALLOWED_CHAT_ID = "REPLACE_WITH_YOUR_TELEGRAM_USER_ID"
+GITHUB_REPO = "nixroll/nixroll-site"
+GITHUB_BRANCH = "master"
+SITE_URL = "https://nixroll.co"
+
+# Namespace для состояния диалога (черновик заметки между сообщениями).
+# id подставляется после `wrangler kv namespace create NOTES_BOT_KV`.
+[[kv_namespaces]]
+binding = "NOTES_BOT_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
