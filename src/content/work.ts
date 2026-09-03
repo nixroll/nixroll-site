@@ -1,11 +1,13 @@
 /**
  * Содержимое страницы «Работа». Тексты согласованы и приведены дословно по ТЗ
- * «Страница „Работа“ / Work: полные тексты, версия 3» от 1 сентября 2026.
- * Править, сокращать, переставлять и дополнять их нельзя.
+ * «Страница «Работа» и «О себе» на nixroll.co — финальные тексты, версия 4»
+ * от 3 сентября 2026. Версия 4 отменяет версию 3: в версии 3 были неверные
+ * даты у четырёх компаний из пяти и должность Product Lead, которой у
+ * Никиты нет. Править, сокращать, переставлять и дополнять тексты нельзя.
  *
  * Неразрывные пробелы записаны escape-последовательностью \u00A0: сам символ
  * невидим и при копировании молча превращается в обычный пробел. На русской
- * версии их ровно 50 — 9 + 10 + 14 + 10 + 4 + 3 по блокам. По этой же причине
+ * версии их ровно 56 — 9 + 9 + 14 + 17 + 4 + 3 по блокам. По этой же причине
  * тексты не прогоняются через applyRuTypography: расстановка зафиксирована
  * ТЗ, автоматика добавила бы лишние (в том числе внутри дат «2022 - сейчас»).
  *
@@ -40,8 +42,8 @@ export const work: WorkRow[] = [
   {
     name: { en: "SRG Plus", ru: "SRG Plus" },
     role: {
-      en: "Product Lead",
-      ru: "Product Lead",
+      en: "Product Manager",
+      ru: "Product Manager",
     },
     bullets: {
       en: [
@@ -63,24 +65,24 @@ export const work: WorkRow[] = [
   {
     name: { en: "Serge Creator Studios", ru: "Serge Creator Studios" },
     role: {
-      en: "Project Manager → Product Lead",
-      ru: "Project Manager → Product Lead",
+      en: "Project Manager → Product Manager",
+      ru: "Project Manager → Product Manager",
     },
     bullets: {
       en: [
         "Led the development team and a portfolio of five client products, each with its own development cycle and release schedule.",
-        "Introduced quality control systems across the studio’s delivery process, growing average client retention from one year to two.",
-        "Launched and led SRG Plus, a product incubated inside the studio, moving the company from client services into its own product.",
+        "Introduced quality control systems across the studio’s delivery process: clients began renewing contracts for a second year instead of running one-off projects.",
+        "Launched and led SRG Plus, a product incubated inside the studio and later spun out into a company of its own.",
       ],
       ru: [
         "Управление командой разработки и\u00A0портфелем из\u00A0пяти клиентских продуктов, каждый с\u00A0собственным циклом разработки и\u00A0графиком релизов.",
-        "Внедрение систем контроля качества в\u00A0процессы студии: средний срок удержания клиента вырос с\u00A0года до\u00A0двух.",
-        "Запуск и\u00A0руководство SRG Plus, продуктом, выросшим внутри студии: переход компании от\u00A0клиентской разработки к\u00A0собственному продукту.",
+        "Внедрение систем контроля качества в\u00A0процессы студии: клиенты начали продлевать контракты на\u00A0второй год вместо разовых проектов.",
+        "Запуск и\u00A0руководство SRG Plus, продуктом, выросшим внутри студии и\u00A0позже выделенным в\u00A0самостоятельную компанию.",
       ],
     },
     meta: {
-      en: "Los Angeles, United States · Remote · 2021 - 2022",
-      ru: "Лос-Анджелес, США · Удалённо · 2021 - 2022",
+      en: "Los Angeles, United States · Remote · 2022 - 2023",
+      ru: "Лос-Анджелес, США · Удалённо · 2022 - 2023",
     },
   },
   {
@@ -102,8 +104,8 @@ export const work: WorkRow[] = [
       ],
     },
     meta: {
-      en: "Moscow, Russia · Project · 2021",
-      ru: "Москва, Россия · Проект · 2021",
+      en: "Moscow, Russia · Project · 2022",
+      ru: "Москва, Россия · Проект · 2022",
     },
   },
   {
@@ -114,19 +116,19 @@ export const work: WorkRow[] = [
     },
     bullets: {
       en: [
-        "Delivered operational banking software for Banco Santander at a Spanish enterprise software company: joined remotely and relocated to Madrid within three months.",
-        "Launched a credit calculator for European car dealers built on Banco Santander’s lending system, a product serving more than 50,000 users.",
-        "Moved from design into project management: established business processes and delivery metrics, and ran the product’s integration into partner banks.",
+        "Built a product for instant remote car financing and leasing on Banco Santander’s lending system: an embeddable widget on the dealer’s own site with trade-in valuation, partner insurance quotes and deal approval on the spot.",
+        "Onboarded ten of the largest car dealer groups in the EU within the first year and took the product to thirty countries by month twelve, serving more than 50,000 users.",
+        "Moved from design into project management: established business processes and delivery metrics, and ran the product’s integration into partner banks. Joined remotely and relocated to Madrid within three months.",
       ],
       ru: [
-        "Проектирование и\u00A0разработка операционного ПО для банковской системы Banco Santander в\u00A0испанской ИТ-компании: старт удалённо, переезд в\u00A0Мадрид на\u00A0третий месяц.",
-        "Запуск кредитного калькулятора для европейских автодилеров на\u00A0базе кредитной системы Banco Santander, продукта более чем для 50\u00A0000 пользователей.",
-        "Переход из\u00A0дизайна в\u00A0проектное управление: постановка бизнес-процессов и\u00A0метрик поставки, управление интеграцией продукта в\u00A0банки-партнёры.",
+        "Разработка продукта мгновенного дистанционного автокредитования и\u00A0лизинга на\u00A0базе кредитной системы Banco Santander: встраиваемый виджет на\u00A0сайте автодилера с\u00A0оценкой trade-in, расчётом страхования через партнёров и\u00A0одобрением сделки в\u00A0моменте.",
+        "Подключение десяти крупнейших автодилеров ЕС за\u00A0первый год и\u00A0выход продукта в\u00A0тридцать стран к\u00A0двенадцатому месяцу, аудитория более 50\u00A0000 пользователей.",
+        "Переход из\u00A0дизайна в\u00A0проектное управление: постановка бизнес-процессов и\u00A0метрик поставки, управление интеграцией продукта в\u00A0банки-партнёры. Старт удалённо, переезд в\u00A0Мадрид на\u00A0третий месяц.",
       ],
     },
     meta: {
-      en: "Madrid, Spain · Office · 2018 - 2021",
-      ru: "Мадрид, Испания · Офис · 2018 - 2021",
+      en: "Madrid, Spain · Office · 2019 - 2022",
+      ru: "Мадрид, Испания · Офис · 2019 - 2022",
     },
   },
   {
@@ -148,8 +150,8 @@ export const work: WorkRow[] = [
       ],
     },
     meta: {
-      en: "Minsk, Belarus · Office · 2016 - 2018",
-      ru: "Минск, Беларусь · Офис · 2016 - 2018",
+      en: "Minsk, Belarus · Office · 2016 - 2019",
+      ru: "Минск, Беларусь · Офис · 2016 - 2019",
     },
   },
   {
@@ -161,7 +163,7 @@ export const work: WorkRow[] = [
     },
     bullets: {
       en: [
-        "Communications, information and organizational reputation: audience research, planning and evaluation of communication campaigns.",
+        "Communications, information and reputation management for organisations: audience research, planning and evaluation of communication campaigns.",
       ],
       ru: [
         "Коммуникации, работа с\u00A0информацией и\u00A0репутацией организаций: исследование аудитории, планирование и\u00A0оценка коммуникационных кампаний.",
