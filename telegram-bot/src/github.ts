@@ -33,12 +33,23 @@ function bytesToBase64(bytes: Uint8Array): string {
   return btoa(binary);
 }
 
+/** Обратное к bytesToBase64: base64 -> исходные байты -> UTF-8 текст. */
+function base64ToUtf8(b64: string): string {
+  const binary = atob(b64.replace(/\n/g, ""));
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new TextDecoder("utf-8").decode(bytes);
+}
+
 async function getCurrentNotes(env: Env): Promise<Note[]> {
   const res = await ghJson<{ content: string }>(
     env,
     `/repos/${env.GITHUB_REPO}/contents/src/content/notes-data.json?ref=${env.GITHUB_BRANCH}`
   );
-  const json = atob(res.content.replace(/\n/g, ""));
+  // ВАЖНО: просто atob() даёт "бинарную" строку (по байту на символ), а не
+  // текст — если декодировать так и сразу JSON.parse, кириллица превращается
+  // в кракозябры (каждый байт UTF-8 читается как отдельный Latin-1 символ).
+  const json = base64ToUtf8(res.content);
   return JSON.parse(json) as Note[];
 }
 
