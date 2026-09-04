@@ -77,7 +77,7 @@ function uniqueSlug(base: string, existing: Note[]): string {
 export type PublishInput = {
   ru: { title: string; body: string[] };
   en: { title: string; body: string[] };
-  photo?: { bytes: Uint8Array; width: number; height: number } | null;
+  photo?: { bytes: Uint8Array; width: number; height: number; ext: "jpg" | "png" | "webp" } | null;
 };
 
 /**
@@ -109,9 +109,9 @@ export async function publishNote(
 
   let imagePath: string | null = null;
   if (input.photo) {
-    imagePath = `public/images/notes/${slug}.jpg`;
+    imagePath = `public/images/notes/${slug}.${input.photo.ext}`;
     note.image = {
-      url: `/images/notes/${slug}.jpg`,
+      url: `/images/notes/${slug}.${input.photo.ext}`,
       width: input.photo.width,
       height: input.photo.height,
       altRu: input.ru.title,

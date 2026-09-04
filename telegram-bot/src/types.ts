@@ -33,5 +33,7 @@ export type Draft = {
   step: Step;
   ru?: { title: string; body: string[] };
   en?: { title: string; body: string[] };
-  photo?: { fileId: string; width: number; height: number } | null;
+  // width/height известны сразу для photo (Telegram их присылает), но не
+  // для document — там их досчитывают из самого файла при публикации.
+  photo?: { fileId: string; width?: number; height?: number } | null;
 };

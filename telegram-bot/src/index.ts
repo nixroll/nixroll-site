@@ -8,17 +8,20 @@ import {
   START_KEYBOARD,
 } from "./telegram";
 import { publishNote } from "./github";
+import { detectImage } from "./image";
 import { alreadyProcessed, clearDraft, getDraft, parseTitleAndBody, setDraft } from "./state";
 
 type TgUser = { id: number };
 type TgChat = { id: number };
 type TgPhotoSize = { file_id: string; width: number; height: number };
+type TgDocument = { file_id: string; mime_type?: string; file_name?: string };
 type TgMessage = {
   message_id: number;
   chat: TgChat;
   from?: TgUser;
   text?: string;
   photo?: TgPhotoSize[];
+  document?: TgDocument;
   caption?: string;
 };
 type TgCallbackQuery = {
@@ -37,7 +40,8 @@ const RU_PROMPT =
   "Отправьте заметку на русском.\n\nПервая строка — заголовок, дальше — текст. Если абзацев несколько, разделите их пустой строкой.";
 const EN_PROMPT =
   "Теперь то же самое на английском.\n\nПервая строка — заголовок, дальше — текст (абзацы через пустую строку).";
-const PHOTO_PROMPT = "Пришлите фото к заметке — или нажмите «Без фото».";
+const PHOTO_PROMPT =
+  "Пришлите фото к заметке (можно как обычное фото, а можно файлом/документом — тогда сожмётся меньше) — или нажмите «Без фото».";
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -138,15 +142,24 @@ async function handleUpdate(env: Env, update: TgUpdate) {
   if (draft.step === "photo") {
     if (message.photo && message.photo.length > 0) {
       const best = message.photo.reduce((a, b) => (b.width > a.width ? b : a));
-      await setDraft(env, chatId, {
-        ...draft,
-        photo: { fileId: best.file_id, width: best.width, height: best.height },
-        step: "confirm",
-      });
-      await sendConfirmPreview(env, chatId, { ...draft, photo: { fileId: best.file_id, width: best.width, height: best.height }, step: "confirm" });
+      const photo = { fileId: best.file_id, width: best.width, height: best.height };
+      await setDraft(env, chatId, { ...draft, photo, step: "confirm" });
+      await sendConfirmPreview(env, chatId, { ...draft, photo, step: "confirm" });
       return;
     }
-    await sendMessage(env, chatId, "Пришлите фото или нажмите «Без фото» под предыдущим сообщением.");
+    if (message.document && (message.document.mime_type ?? "").startsWith("image/")) {
+      // Размеры/формат для документа Telegram не присылает — досчитаем при
+      // публикации из самого файла (см. publishDraft).
+      const photo = { fileId: message.document.file_id };
+      await setDraft(env, chatId, { ...draft, photo, step: "confirm" });
+      await sendConfirmPreview(env, chatId, { ...draft, photo, step: "confirm" });
+      return;
+    }
+    await sendMessage(
+      env,
+      chatId,
+      "Пришлите фото (как фото или файлом-картинкой) или нажмите «Без фото» под предыдущим сообщением."
+    );
     return;
   }
 
@@ -213,12 +226,28 @@ async function publishDraft(
   const ru = draft.ru!;
   const en = draft.en!;
 
-  let photo: { bytes: Uint8Array; width: number; height: number } | null = null;
+  let photo: { bytes: Uint8Array; width: number; height: number; ext: "jpg" | "png" | "webp" } | null =
+    null;
   if (draft.photo) {
     const url = await getFileUrl(env, draft.photo.fileId);
     const res = await fetch(url);
     const buf = new Uint8Array(await res.arrayBuffer());
-    photo = { bytes: buf, width: draft.photo.width, height: draft.photo.height };
+    if (draft.photo.width && draft.photo.height) {
+      // Обычное фото — Telegram сжимает его в JPEG и присылает размеры сразу.
+      photo = { bytes: buf, width: draft.photo.width, height: draft.photo.height, ext: "jpg" };
+    } else {
+      // Файл/документ — размеры и формат достаём из самих байтов.
+      const info = detectImage(buf);
+      if (!info) {
+        await sendMessage(
+          env,
+          chatId,
+          "Не получилось распознать формат картинки (поддерживаются JPEG, PNG, WebP). Попробуйте отправить другим способом или нажмите «Без фото» и опубликуйте без него."
+        );
+        return;
+      }
+      photo = { bytes: buf, width: info.width, height: info.height, ext: info.ext };
+    }
   }
 
   try {
