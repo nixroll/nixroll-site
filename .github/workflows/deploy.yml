@@ -33,8 +33,29 @@ jobs:
           node-version: "22"
           cache: "npm"
 
+      # package-lock.json меняется редко (почти каждый пуш — это заметка от
+      # бота, зависимости те же) — при попадании в кэш install пропускаем
+      # полностью вместо повторной установки node_modules с нуля.
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+
       - name: Install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm ci
+
+      # Next.js кэширует промежуточные результаты компиляции между сборками —
+      # ощутимо ускоряет next build, когда меняется не весь код разом.
+      - name: Cache Next.js build cache
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: nextjs-${{ hashFiles('package-lock.json') }}-${{ github.sha }}
+          restore-keys: |
+            nextjs-${{ hashFiles('package-lock.json') }}-
 
       - name: Strip server-only routes (not supported by static export)
         run: rm -rf src/app/api

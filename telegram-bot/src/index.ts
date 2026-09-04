@@ -256,7 +256,7 @@ async function publishDraft(
     await sendMessage(
       env,
       chatId,
-      `✅ Опубликовано. Сайт пересоберётся автоматически — через 1–2 минуты заметка будет здесь:\n${env.SITE_URL}/ru/notes/#${slug}`,
+      `✅ Опубликовано. Сайт пересоберётся автоматически — через несколько минут заметка будет здесь:\n${env.SITE_URL}/ru/notes/#${slug}`,
       { reply_markup: START_KEYBOARD }
     );
   } catch (err) {
