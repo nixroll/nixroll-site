@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "id": "hello-world",
+    "slug": "hello-world",
+    "status": "published",
+    "publishedAt": "2026-09-04",
+    "ru": {
+      "title": "Привет, Мир!",
+      "body": [
+        "Два вечера с Claude, и небольшой личный сайт собран. Хостится всё на GitHub, домен подключён прямо к репозиторию. Из интересного, самописный бот в Telegram, который работает как мини CMS и позволяет загружать заметки на сайт прямо с телефона. Кстати, эту заметку я тоже пишу в Telegram.",
+        "Приятно, что такие базовые вещи теперь можно собрать ещё быстрее, сосредоточившись на продукте, а не на реализации."
+      ]
+    },
+    "en": {
+      "title": "Hello, World!",
+      "body": [
+        "Two evenings with Claude, and a small personal site is up. Everything's hosted on GitHub, with the domain pointed straight at the repo. The fun part is a homemade Telegram bot that acts as a mini CMS, letting me post notes straight from my phone. This very note was written in Telegram too.",
+        "Nice to know the basics can now come together even faster, letting you focus on the product instead of how to build it."
+      ]
+    }
+  }
+]
