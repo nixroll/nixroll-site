@@ -1,5 +1,23 @@
 [
   {
+    "id": "test",
+    "slug": "test",
+    "status": "published",
+    "publishedAt": "2026-09-04",
+    "ru": {
+      "title": "Тест",
+      "body": [
+        "тест"
+      ]
+    },
+    "en": {
+      "title": "Test",
+      "body": [
+        "Test"
+      ]
+    }
+  },
+  {
     "id": "hello-world",
     "slug": "hello-world",
     "status": "published",
