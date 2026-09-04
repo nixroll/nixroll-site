@@ -1,5 +1,23 @@
 [
   {
+    "id": "hello-world",
+    "slug": "hello-world",
+    "status": "published",
+    "publishedAt": "2026-09-04",
+    "ru": {
+      "title": "Hello, World!",
+      "body": [
+        "Первая заметка из самописного CMS на базе Telegram."
+      ]
+    },
+    "en": {
+      "title": "Hello, World!",
+      "body": [
+        "The first post from an automated CMS based on Telegram."
+      ]
+    }
+  },
+  {
     "id": "fifteen-years-to-the-top",
     "slug": "fifteen-years-to-the-top",
     "status": "published",
