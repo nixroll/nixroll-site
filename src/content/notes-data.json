@@ -1,5 +1,30 @@
 [
   {
+    "id": "fifteen-years-to-the-top",
+    "slug": "fifteen-years-to-the-top",
+    "status": "published",
+    "publishedAt": "2026-09-04",
+    "ru": {
+      "title": "Пятнадцать лет пути наверх",
+      "body": [
+        "Тим Кук завершил 15 лет во главе Apple и 1 сентября 2026 года передал пост CEO Джону Тернусу, который два десятилетия строил карьеру внутри компании: начинал инженером, а стал руководителем всех аппаратных разработок. Приятный повод вспомнить, насколько далеко может завести рост внутри одной организации, и для того, кто уходит, и для того, кто приходит."
+      ]
+    },
+    "en": {
+      "title": "Fifteen Years to the Top",
+      "body": [
+        "Tim Cook closed out 15 years leading Apple, stepping down as CEO on September 1, 2026, and handing the role to John Ternus, who spent two decades building his career inside the company, starting as an engineer and rising to lead all hardware engineering. A nice reminder of how far growth within a single company can take you, both for the one leaving and the one stepping up."
+      ]
+    },
+    "image": {
+      "url": "/images/notes/fifteen-years-to-the-top.jpg",
+      "width": 1280,
+      "height": 720,
+      "altRu": "Пятнадцать лет пути наверх",
+      "altEn": "Fifteen Years to the Top"
+    }
+  },
+  {
     "id": "m6-home-agent",
     "slug": "m6-and-a-home-agent",
     "status": "published",
