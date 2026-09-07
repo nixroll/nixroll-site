@@ -47,13 +47,13 @@ export const work: WorkRow[] = [
     },
     bullets: {
       en: [
-        "Took a new SaaS content management product to market: a cross-platform application and a web version, with the team and the development process built from scratch.",
-        "Reached 50 corporate clients on paid subscriptions within the first year of launch, opening the product’s first revenue stream.",
+        "Took a new SaaS content management product to market: a cross-platform application and a web version, with the team and the development process built from scratch, reaching around 50 clients within the first year.",
+        "Opened the product’s first revenue stream through paid subscriptions for corporate clients.",
         "Own the product end to end: strategy and development priorities, product metrics, team composition and process, the release cycle and subscription economics.",
       ],
       ru: [
-        "Вывод на\u00A0рынок нового SaaS-продукта для управления контентом: кроссплатформенное приложение и\u00A0веб-версия, собственная команда и\u00A0выстроенный процесс разработки.",
-        "Привлечение 50 корпоративных клиентов на\u00A0платной подписке за\u00A0первый год после запуска, первая выручка продукта.",
+        "Вывод на\u00A0рынок нового SaaS-продукта для управления контентом: кроссплатформенное приложение и\u00A0веб-версия, собственная команда и\u00A0выстроенный процесс разработки, около 50 клиентов в\u00A0первый год.",
+        "Первая выручка продукта: платная подписка для корпоративных клиентов.",
         "Полная ответственность за\u00A0продукт: стратегия и\u00A0приоритеты развития, продуктовые метрики, состав и\u00A0процессы команды, релизный цикл и\u00A0экономика подписки.",
       ],
     },
@@ -127,8 +127,8 @@ export const work: WorkRow[] = [
       ],
     },
     meta: {
-      en: "Madrid, Spain · Office · 2019 - 2022",
-      ru: "Мадрид, Испания · Офис · 2019 - 2022",
+      en: "Madrid, Spain · Hybrid · 2019 - 2022",
+      ru: "Мадрид, Испания · Гибрид · 2019 - 2022",
     },
   },
   {

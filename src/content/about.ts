@@ -37,7 +37,7 @@ export const about: Record<"en" | "ru", { paragraphs: AboutSegment[][] }> = {
         " and build the company’s product strategy and its systems for managing teams.",
       ],
       [
-        "My interest lies in technology and engineering culture, in how an idea becomes a system people rely on every day. I am equally interested in launching products from zero and in reshaping ones that already run: in both cases the task is the same, taking the product to a measurable result. Most of my attention goes to how a team is set up and how decisions are made inside it.",
+        "My interest lies in technology and engineering culture, in how an idea becomes a system people rely on every day. I am equally interested in launching products from zero and in reshaping ones that already run: in both cases the task is the same, taking the product to a measurable result and then steadily improving it. Most of my attention goes to how a team is set up: how tasks and responsibilities are distributed, and how the team grows alongside the product. I care about keeping the process under control at every stage, without tipping into micromanagement.",
       ],
       [
         "What interests me is the intersection of technology and finance in modern digital products, and I am looking at product roles in a large technology or financial company.",
@@ -52,7 +52,7 @@ export const about: Record<"en" | "ru", { paragraphs: AboutSegment[][] }> = {
         " и\u00A0выстраиваю внутри компании продуктовую стратегию и\u00A0систему управления командами.",
       ],
       [
-        "Мой интерес лежит в\u00A0технологиях и\u00A0инженерной культуре, в\u00A0том, как замысел становится системой, которой пользуются каждый день. Мне одинаково интересно запускать продукты с\u00A0нуля и\u00A0перестраивать те, что уже работают: в\u00A0обоих случаях задача одна, довести продукт до измеримого результата. Больше всего внимания я\u00A0уделяю тому, как устроена команда и\u00A0как в\u00A0ней принимаются решения.",
+        "Мой интерес лежит в\u00A0технологиях и\u00A0инженерной культуре, в\u00A0том, как замысел становится системой, которой пользуются каждый день. Мне одинаково интересно запускать продукты с\u00A0нуля и\u00A0перестраивать те, что уже работают: в\u00A0обоих случаях задача одна, довести продукт до измеримого результата и\u00A0затем стабильно его улучшать. Больше всего внимания я\u00A0уделяю тому, как устроена команда: распределению задач и\u00A0зон ответственности и\u00A0тому, как команда растёт вместе с\u00A0продуктом. Мне важно держать процесс под контролем на каждом этапе, не превращая это в\u00A0микроменеджмент.",
       ],
       [
         "Мне интересно пересечение технологий и\u00A0финансов в\u00A0современных цифровых продуктах, и\u00A0я\u00A0рассматриваю развитие продукта в\u00A0крупной технологической или финансовой компании.",
