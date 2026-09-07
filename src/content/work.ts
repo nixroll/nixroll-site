@@ -70,12 +70,12 @@ export const work: WorkRow[] = [
     },
     bullets: {
       en: [
-        "Led the development team and a portfolio of five client products, each with its own development cycle and release schedule.",
+        "Led the development team and a portfolio of three client products, each with its own development cycle and release schedule.",
         "Introduced quality control systems across the studio’s delivery process: clients began renewing contracts for a second year instead of running one-off projects.",
         "Launched and led SRG Plus, a product incubated inside the studio and later spun out into a company of its own.",
       ],
       ru: [
-        "Управление командой разработки и\u00A0портфелем из\u00A0пяти клиентских продуктов, каждый с\u00A0собственным циклом разработки и\u00A0графиком релизов.",
+        "Управление командой разработки и\u00A0портфелем из\u00A0трёх клиентских продуктов, каждый с\u00A0собственным циклом разработки и\u00A0графиком релизов.",
         "Внедрение систем контроля качества в\u00A0процессы студии: клиенты начали продлевать контракты на\u00A0второй год вместо разовых проектов.",
         "Запуск и\u00A0руководство SRG Plus, продуктом, выросшим внутри студии и\u00A0позже выделенным в\u00A0самостоятельную компанию.",
       ],
@@ -117,12 +117,12 @@ export const work: WorkRow[] = [
     bullets: {
       en: [
         "Built a product for instant remote car financing and leasing on Banco Santander’s lending system: an embeddable widget on the dealer’s own site with trade-in valuation, partner insurance quotes and deal approval on the spot.",
-        "Onboarded ten of the largest car dealer groups in the EU within the first year and took the product to thirty countries by month twelve, serving more than 50,000 users.",
+        "Onboarded ten of the largest car dealer groups in the EU within the first year and took the product to thirty countries by month twelve, serving more than 100,000 users.",
         "Moved from design into project management: established business processes and delivery metrics, and ran the product’s integration into partner banks. Joined remotely and relocated to Madrid within three months.",
       ],
       ru: [
         "Разработка продукта мгновенного дистанционного автокредитования и\u00A0лизинга на\u00A0базе кредитной системы Banco Santander: встраиваемый виджет на\u00A0сайте автодилера с\u00A0оценкой trade-in, расчётом страхования через партнёров и\u00A0одобрением сделки в\u00A0моменте.",
-        "Подключение десяти крупнейших автодилеров ЕС за\u00A0первый год и\u00A0выход продукта в\u00A0тридцать стран к\u00A0двенадцатому месяцу, аудитория более 50\u00A0000 пользователей.",
+        "Подключение десяти крупнейших автодилеров ЕС за\u00A0первый год и\u00A0выход продукта в\u00A0тридцать стран к\u00A0двенадцатому месяцу, аудитория более 100\u00A0000 пользователей.",
         "Переход из\u00A0дизайна в\u00A0проектное управление: постановка бизнес-процессов и\u00A0метрик поставки, управление интеграцией продукта в\u00A0банки-партнёры. Старт удалённо, переезд в\u00A0Мадрид на\u00A0третий месяц.",
       ],
     },
