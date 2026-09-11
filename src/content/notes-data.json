@@ -1,27 +1,31 @@
 [
   {
-    "id": "fifteen-years-to-the-top",
-    "slug": "fifteen-years-to-the-top",
+    "id": "25-years-to-ceo",
+    "slug": "25-years-to-ceo",
     "status": "published",
     "publishedAt": "2026-09-04",
     "ru": {
-      "title": "Пятнадцать лет пути наверх",
+      "title": "25 лет до CEO",
       "body": [
-        "Тим Кук завершил 15 лет во главе Apple и 1 сентября 2026 года передал пост CEO Джону Тернусу, который два десятилетия строил карьеру внутри компании: начинал инженером, а стал руководителем всех аппаратных разработок. Приятный повод вспомнить, насколько далеко может завести рост внутри одной организации, и для того, кто уходит, и для того, кто приходит."
+        "Тим Кук завершил пятнадцать лет на посту CEO Apple и 1 сентября 2026 года передал руководство Джону Тернусу.",
+        "Тернус пришёл в Apple в 2001 году инженером, его первым проектом был монитор Apple Cinema Display. К 2022 году он уже отвечал за всю аппаратную инженерию компании: iPhone, Mac, iPad, Watch.",
+        "Двадцать пять лет от рядового инженера до кресла CEO, без единой смены компании. Это редкость даже по меркам техногигантов и хороший повод вспомнить, что такой путь всё ещё возможен."
       ]
     },
     "en": {
-      "title": "Fifteen Years to the Top",
+      "title": "25 Years to CEO",
       "body": [
-        "Tim Cook closed out 15 years leading Apple, stepping down as CEO on September 1, 2026, and handing the role to John Ternus, who spent two decades building his career inside the company, starting as an engineer and rising to lead all hardware engineering. A nice reminder of how far growth within a single company can take you, both for the one leaving and the one stepping up."
+        "Tim Cook wrapped up fifteen years as Apple's CEO and handed the role to John Ternus on September 1, 2026.",
+        "Ternus joined Apple in 2001 as an engineer, and his first project was the Apple Cinema Display. By 2022 he was running all of the company's hardware engineering: iPhone, Mac, iPad, Watch.",
+        "Twenty five years from a line engineer to the CEO's chair, without ever leaving the company. That's rare even among tech giants, and a good reminder that this kind of path is still possible."
       ]
     },
     "image": {
-      "url": "/images/notes/fifteen-years-to-the-top.jpg",
-      "width": 3840,
-      "height": 2160,
-      "altRu": "Пятнадцать лет пути наверх",
-      "altEn": "Fifteen Years to the Top"
+      "url": "/images/notes/25-years-to-ceo.jpg",
+      "width": 3608,
+      "height": 2598,
+      "altRu": "25 лет до CEO",
+      "altEn": "25 Years to CEO"
     }
   },
   {
