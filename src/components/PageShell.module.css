@@ -1,88 +1,69 @@
 .page {
-  background: var(--color-background);
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 96px 0;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
+  padding: 82px 0;
+  background: var(--color-background);
 }
 
 .container {
   display: flex;
-  flex: 1 0 0;
   flex-direction: column;
   align-items: flex-start;
-  gap: 64px;
-  max-width: 720px;
-  min-width: 0;
-  padding: 0 32px;
+  gap: 44px;
+  width: 100%;
+  max-width: 660px;
+  padding: 0 40px;
 
   /* Шаг между стартами соседних элементов — основная ручка настройки. */
   --stagger: 110ms;
 }
 
 /*
- * Появление содержимого — многоуровневая ступенька.
+ * Появление содержимого — двухуровневая ступенька (перенесено 1-в-1 с
+ * прежней реализации в About/Work, см. claude/site-tz-minimal-redesign.md):
  *
- * Уровень 1: секции (блоки страницы начиная с третьего) проявляются из
- *   лёгкого размытия друг за другом.
- * Уровни 2–4: элементы внутри секции всплывают снизу на 12px, каждый со
- *   своим шагом поверх задержки родителя — задержки складываются, поэтому
- *   внутри секции элементы стартуют вразнобой, а соседние ветки
- *   перекрываются во времени.
+ * Уровень 1: все секции страницы (header, content, divider, footer —
+ *   прямые дети .container) проявляются из лёгкого размытия друг за другом.
+ * Уровень 2: элементы внутри каждой секции (строки таймлайна, строки
+ *   футера и т.д.) всплывают снизу на 12px поверх задержки своей секции.
  *
- * Шапка и навигация одинаковы на всех страницах и остаются неподвижными.
- * Анимация перезапускается при смене раздела: контейнер в PageShell.tsx
- * получает key по текущему пути.
+ * Эффект проигрывается один раз при монтировании страницы — не
+ * scroll-triggered.
  */
 
 /* --- Уровень 1: секции --- */
 
-.container > *:nth-child(n + 3) {
+.container > *:nth-child(n + 1) {
   --delay-1: calc(var(--index-1, 0) * var(--stagger));
   animation: sectionReveal 700ms ease-out both;
   animation-delay: var(--delay-1);
 }
 
-.container > *:nth-child(3) {
+.container > *:nth-child(1) {
   --index-1: 0;
 }
-.container > *:nth-child(4) {
+.container > *:nth-child(2) {
   --index-1: 1;
 }
-.container > *:nth-child(5) {
+.container > *:nth-child(3) {
   --index-1: 2;
 }
-.container > *:nth-child(6) {
+.container > *:nth-child(4) {
   --index-1: 3;
-}
-.container > *:nth-child(7) {
-  --index-1: 4;
-}
-.container > *:nth-child(8) {
-  --index-1: 5;
 }
 
 /*
- * --- Элементы (уровни 2–4) ---
+ * --- Элементы (уровень 2) ---
  *
- * Подъём и проявление разведены, как в референсе: элемент быстро
- * проступает (300ms) и дольше доезжает (800ms). Если растянуть оба на
- * одинаково долгий срок, движение читается вялым.
- *
- * Подъём идёт по кривой пружины с нулевым
- * отскоком — скорость стартует с нуля, разгоняется к 11% времени и
- * плавно гаснет. Обычная ease-out так не умеет: она срывается с места
- * на максимальной скорости, и движение читается линейным.
- *
- * Кривая записана функцией linear() — она задаёт форму по точкам.
- * Строкой выше стоит запасная cubic-bezier: браузеры без поддержки
- * linear() просто отбросят следующую строку и возьмут её.
+ * Подъём и проявление разведены: элемент быстро проступает (300ms) и
+ * дольше доезжает (800ms). Подъём идёт по кривой пружины без отскока —
+ * записана функцией linear() по точкам; строка выше — запасной
+ * cubic-bezier для браузеров без поддержки linear().
  */
 
-.container > *:nth-child(n + 3) > *,
-.container > *:nth-child(n + 3) > [data-reveal] > *,
-.container > *:nth-child(n + 3) > [data-reveal] > [data-reveal] > * {
+.container > *:nth-child(n + 1) > * {
   animation-name: itemRise, itemFade;
   animation-duration: 800ms, 300ms;
   animation-fill-mode: both, both;
@@ -94,124 +75,39 @@
       0.9982, 0.9986, 1
     ),
     ease-out;
-}
-
-/* --- Уровень 2: элементы внутри секции --- */
-
-.container > *:nth-child(n + 3) > * {
   --delay-2: calc(var(--delay-1, 0ms) + var(--index-2, 0) * var(--stagger));
   animation-delay: var(--delay-2);
 }
 
-.container > *:nth-child(n + 3) > *:nth-child(1) {
+.container > *:nth-child(n + 1) > *:nth-child(1) {
   --index-2: 0;
 }
-.container > *:nth-child(n + 3) > *:nth-child(2) {
+.container > *:nth-child(n + 1) > *:nth-child(2) {
   --index-2: 1;
 }
-.container > *:nth-child(n + 3) > *:nth-child(3) {
+.container > *:nth-child(n + 1) > *:nth-child(3) {
   --index-2: 2;
 }
-.container > *:nth-child(n + 3) > *:nth-child(4) {
+.container > *:nth-child(n + 1) > *:nth-child(4) {
   --index-2: 3;
 }
-.container > *:nth-child(n + 3) > *:nth-child(5) {
+.container > *:nth-child(n + 1) > *:nth-child(5) {
   --index-2: 4;
 }
-.container > *:nth-child(n + 3) > *:nth-child(6) {
+.container > *:nth-child(n + 1) > *:nth-child(6) {
   --index-2: 5;
 }
-.container > *:nth-child(n + 3) > *:nth-child(7) {
+.container > *:nth-child(n + 1) > *:nth-child(7) {
   --index-2: 6;
 }
-.container > *:nth-child(n + 3) > *:nth-child(8) {
+.container > *:nth-child(n + 1) > *:nth-child(8) {
   --index-2: 7;
 }
-.container > *:nth-child(n + 3) > *:nth-child(9) {
+.container > *:nth-child(n + 1) > *:nth-child(9) {
   --index-2: 8;
 }
-.container > *:nth-child(n + 3) > *:nth-child(10) {
+.container > *:nth-child(n + 1) > *:nth-child(10) {
   --index-2: 9;
-}
-.container > *:nth-child(n + 3) > *:nth-child(11) {
-  --index-2: 10;
-}
-.container > *:nth-child(n + 3) > *:nth-child(12) {
-  --index-2: 11;
-}
-
-/*
- * Явный номер в очереди на уровне 2. Стоит после правил с nth-child,
- * поэтому при равной силе селектора побеждает. Нужен переключателю
- * языка: оба языка появляются одновременно, а не друг за другом.
- */
-.container > *:nth-child(n + 3) > [data-reveal-index="0"] {
-  --index-2: 0;
-}
-
-/*
- * --- Уровни 3 и 4: части внутри помеченных групп ---
- *
- * Атрибут data-reveal ставится в компоненте на тот блок, чьи части должны
- * появляться отдельными стартами (строка на Work, карточка заметки и её
- * текстовый блок на Notes). Без пометки вложенность дальше не дробится —
- * поэтому, например, название и должность выходят вместе, а не порознь.
- */
-
-.container > *:nth-child(n + 3) > [data-reveal] > * {
-  --delay-3: calc(var(--delay-2, 0ms) + var(--index-3, 0) * var(--stagger));
-  animation-delay: var(--delay-3);
-}
-
-.container > *:nth-child(n + 3) > [data-reveal] > *:nth-child(1) {
-  --index-3: 0;
-}
-.container > *:nth-child(n + 3) > [data-reveal] > *:nth-child(2) {
-  --index-3: 1;
-}
-.container > *:nth-child(n + 3) > [data-reveal] > *:nth-child(3) {
-  --index-3: 2;
-}
-.container > *:nth-child(n + 3) > [data-reveal] > *:nth-child(4) {
-  --index-3: 3;
-}
-.container > *:nth-child(n + 3) > [data-reveal] > *:nth-child(5) {
-  --index-3: 4;
-}
-.container > *:nth-child(n + 3) > [data-reveal] > *:nth-child(6) {
-  --index-3: 5;
-}
-
-/*
- * Явный номер в очереди — когда порядок в разметке не совпадает с
- * желаемым порядком появления. Нужен обложке заметки: она лежит рядом с
- * текстовым блоком, а не внутри него, поэтому по вложенности стартовала
- * бы одновременно с абзацами. Текстовый блок занимает две позиции
- * (заголовок и текст), обложке достаётся третья.
- */
-.container > *:nth-child(n + 3) > [data-reveal] > [data-reveal-index="2"] {
-  --index-3: 2;
-}
-.container > *:nth-child(n + 3) > [data-reveal] > [data-reveal-index="3"] {
-  --index-3: 3;
-}
-
-.container > *:nth-child(n + 3) > [data-reveal] > [data-reveal] > * {
-  --delay-4: calc(var(--delay-3, 0ms) + var(--index-4, 0) * var(--stagger));
-  animation-delay: var(--delay-4);
-}
-
-.container > *:nth-child(n + 3) > [data-reveal] > [data-reveal] > *:nth-child(1) {
-  --index-4: 0;
-}
-.container > *:nth-child(n + 3) > [data-reveal] > [data-reveal] > *:nth-child(2) {
-  --index-4: 1;
-}
-.container > *:nth-child(n + 3) > [data-reveal] > [data-reveal] > *:nth-child(3) {
-  --index-4: 2;
-}
-.container > *:nth-child(n + 3) > [data-reveal] > [data-reveal] > *:nth-child(4) {
-  --index-4: 3;
 }
 
 @keyframes sectionReveal {
@@ -246,9 +142,7 @@
 /* Уважаем системную настройку «уменьшить движение». */
 @media (prefers-reduced-motion: reduce) {
   .container > *,
-  .container > * > *,
-  .container > * > * > *,
-  .container > * > * > * > * {
+  .container > * > * {
     animation: none;
   }
 }

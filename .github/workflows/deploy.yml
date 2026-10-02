@@ -1,12 +1,9 @@
 name: Deploy
 
 # Пуш в master пересобирает сайт статическим экспортом и публикует его
-# в ветку gh-pages. Раньше эти шаги выполнялись вручную (см. историю
-# коммитов) — этот workflow их заменяет, включая правки, которые нужны
-# только для статической сборки: /api/* не работает на GitHub Pages,
-# поэтому роуты вырезаются, а next.config.ts на время сборки
-# подменяется на export-конфиг (в репозитории он "обычный", чтобы
-# next dev с /api работал локально).
+# в ветку gh-pages. next.config.ts на время сборки подменяется на
+# export-конфиг (в репозитории он "обычный", чтобы next dev работал
+# локально без лишних ограничений статического экспорта).
 
 on:
   push:
@@ -33,9 +30,6 @@ jobs:
           node-version: "22"
           cache: "npm"
 
-      # package-lock.json меняется редко (почти каждый пуш — это заметка от
-      # бота, зависимости те же) — при попадании в кэш install пропускаем
-      # полностью вместо повторной установки node_modules с нуля.
       - name: Cache node_modules
         id: cache-node-modules
         uses: actions/cache@v4
@@ -57,15 +51,9 @@ jobs:
           restore-keys: |
             nextjs-${{ hashFiles('package-lock.json') }}-
 
-      - name: Strip server-only routes (not supported by static export)
-        run: rm -rf src/app/api
-
-      - name: Remove ISR revalidate hint (meaningless for static export)
-        run: sed -i '/export const revalidate = 60;/d' "src/app/[[...path]]/page.tsx"
-
       - name: Switch to static-export Next config
         run: |
-          cat > next.config.ts <<'EOF'
+          cat > next.config.ts <<'CONFIG'
           import type { NextConfig } from "next";
 
           const nextConfig: NextConfig = {
@@ -75,11 +63,20 @@ jobs:
           };
 
           export default nextConfig;
-          EOF
+          CONFIG
+
+      # Футер показывает "updated [дата]" автоматически — дата последнего
+      # деплоя, а не ручная правка (решение Никиты, см.
+      # claude/site-tz-minimal-redesign.md). Прокидывается в билд через
+      # NEXT_PUBLIC_BUILD_DATE и читается в src/lib/build-date.ts.
+      - name: Compute build date
+        id: build-date
+        run: echo "date=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
 
       - name: Build
         env:
           NEXT_PUBLIC_SITE_URL: "https://nixroll.co"
+          NEXT_PUBLIC_BUILD_DATE: ${{ steps.build-date.outputs.date }}
         run: npx next build
 
       - name: Add GitHub Pages custom-domain files

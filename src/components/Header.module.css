@@ -1,0 +1,52 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.avatar {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/*
+ * Та же кадрирующая геометрия (в процентах от контейнера), что и раньше у
+ * 32×32 фото — просто теперь в круге побольше. Проценты не зависят от
+ * размера контейнера, так что кадр лица остаётся тем же самым.
+ */
+.avatarImg {
+  position: absolute;
+  width: 210.5%;
+  height: 140.33%;
+  max-width: none;
+  top: -34.17%;
+  left: -50.75%;
+  object-fit: cover;
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+}
+
+.name {
+  color: var(--color-primary);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.role {
+  color: var(--color-secondary);
+  font-weight: 400;
+  font-size: 14px;
+}
