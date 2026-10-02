@@ -4,7 +4,7 @@
  * в круге 64×64 вместо 32×32.
  */
 export const profile = {
-  name: "Nikita",
+  name: "Nikita E.",
   role: "product manager",
   avatar: {
     src: "/images/avatar.jpg",

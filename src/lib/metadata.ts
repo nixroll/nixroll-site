@@ -9,8 +9,8 @@ const absolute = (path: string) => `${siteUrl}${path}`;
 /** Превью для ссылок в мессенджерах и соцсетях: 1200×630. */
 const COVER = { path: "/seo/cover.png", width: 1200, height: 630 };
 
-const TITLE = "Nikita — product manager";
-const DESCRIPTION = "Nikita's now page — product manager, career timeline, contact.";
+const TITLE = "Nikita E. — product manager";
+const DESCRIPTION = "Nikita E.'s now page — product manager, career timeline, contact.";
 
 /**
  * Сайт теперь одноязычный (EN), поэтому метаданные — один статический
@@ -23,7 +23,7 @@ export const siteMetadata: Metadata = {
   alternates: { canonical: absolute("/") },
   openGraph: {
     type: "website",
-    siteName: "Nikita",
+    siteName: "Nikita E.",
     title: TITLE,
     description: DESCRIPTION,
     url: absolute("/"),
@@ -33,7 +33,7 @@ export const siteMetadata: Metadata = {
         url: absolute(COVER.path),
         width: COVER.width,
         height: COVER.height,
-        alt: "Nikita",
+        alt: "Nikita E.",
       },
     ],
   },
