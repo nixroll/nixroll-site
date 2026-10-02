@@ -3,42 +3,68 @@
  * скопирован из ТЗ дословно (claude/site-tz-minimal-redesign.md), ссылки на
  * компании получены от Никиты напрямую. Школа/универ/переезд/рождение —
  * намеренно без ссылок.
+ *
+ * Перенос строк: `lead` — обычный текст, может переноситься как угодно.
+ * `glued` — предлог + место/компания; элементы между собой и внутри
+ * (у многословных названий вроде "Appgile SL") склеены неразрывными
+ * пробелами (см. joinNbsp в Timeline.tsx), чтобы "at" никогда не отрывался
+ * от компании и "Appgile" от "SL" — ровно так, как в макете Figma.
  */
+export type TimelineGluedPart = { text: string; href?: string };
+
 export type TimelineItem = {
   year: string;
-  before: string;
-  company?: { name: string; href: string };
+  lead?: string;
+  glued: TimelineGluedPart[];
 };
 
 export const timeline: TimelineItem[] = [
   {
     year: "now",
-    before: "product manager at ",
-    company: { name: "RocketData", href: "https://rocketdata.ru" },
+    lead: "product manager",
+    glued: [{ text: "at" }, { text: "RocketData", href: "https://rocketdata.ru" }],
   },
   {
     year: "2022",
-    before: "product manager at ",
-    company: { name: "SRG+", href: "https://srgplus.app" },
+    lead: "product manager",
+    glued: [{ text: "at" }, { text: "SRG+", href: "https://srgplus.app" }],
   },
   {
     year: "2022",
-    before: "project manager at ",
-    company: { name: "SCS", href: "https://creatorstudios.io" },
+    lead: "project manager",
+    glued: [{ text: "at" }, { text: "SCS", href: "https://creatorstudios.io" }],
   },
   {
     year: "2020",
-    before: "project manager at ",
-    company: { name: "Appgile SL", href: "https://appgile.com" },
+    lead: "project manager",
+    glued: [{ text: "at" }, { text: "Appgile SL", href: "https://appgile.com" }],
   },
   {
     year: "2019",
-    before: "design at ",
-    company: { name: "Appgile SL", href: "https://appgile.com" },
+    lead: "design",
+    glued: [{ text: "at" }, { text: "Appgile SL", href: "https://appgile.com" }],
   },
-  { year: "2019", before: "graduation from BSU" },
-  { year: "2016", before: "design at UC" },
-  { year: "2014", before: "finished school" },
-  { year: "2006", before: "moved to Minsk" },
-  { year: "1996", before: "b. Oshmyany" },
+  {
+    year: "2019",
+    lead: "graduation",
+    glued: [{ text: "from" }, { text: "BSU" }],
+  },
+  {
+    year: "2016",
+    lead: "design",
+    glued: [{ text: "at" }, { text: "UC" }],
+  },
+  {
+    year: "2014",
+    glued: [{ text: "finished school" }],
+  },
+  {
+    year: "2006",
+    lead: "moved",
+    glued: [{ text: "to" }, { text: "Minsk" }],
+  },
+  {
+    year: "1996",
+    glued: [{ text: "b. Oshmyany" }],
+  },
 ];
