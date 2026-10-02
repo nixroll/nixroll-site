@@ -25,7 +25,7 @@ export const timeline: TimelineItem[] = [
     glued: [{ text: "at" }, { text: "RocketData", href: "https://rocketdata.ru" }],
   },
   {
-    year: "2022",
+    year: "2023",
     lead: "product manager",
     glued: [{ text: "at" }, { text: "SRG+", href: "https://srgplus.app" }],
   },
