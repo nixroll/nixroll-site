@@ -1,0 +1,24 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/3fntmmi971322.js","/_next/static/chunks/0axdrs6tow-4n.js"],""]
+3:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+8:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+9:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+a:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+c:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+d:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+:HL["/_next/static/chunks/1w9de4778k0c2.css","style"]
+:HL["/_next/static/chunks/0cyoh3posco-2.css","style"]
+7:X
+f:X
+f:C
+0:{"buildId":"fS3OA2DuzCh-ta2wF9rYv","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"not-found-module__HS70Aa__page","children":["$","div",null,{"className":"not-found-module__HS70Aa__row","children":[["$","p",null,{"className":"not-found-module__HS70Aa__code","children":"404"}],["$","p",null,{"className":"not-found-module__HS70Aa__message","children":["This page could not be found. ",["$","$L2",null,{"href":"/","className":"not-found-module__HS70Aa__link","children":"Back to nixroll.co"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1w9de4778k0c2.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/0axdrs6tow-4n.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L8",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Nikita E. — product manager"}],["$","meta","1",{"name":"description","content":"Nikita E.'s now page — product manager, career timeline, contact."}],["$","link","2",{"rel":"canonical","href":"https://nixroll.co/"}],["$","meta","3",{"property":"og:title","content":"Nikita E. — product manager"}],["$","meta","4",{"property":"og:description","content":"Nikita E.'s now page — product manager, career timeline, contact."}],["$","meta","5",{"property":"og:url","content":"https://nixroll.co/"}],["$","meta","6",{"property":"og:site_name","content":"Nikita E."}],["$","meta","7",{"property":"og:locale","content":"en_US"}],["$","meta","8",{"property":"og:image","content":"https://nixroll.co/seo/cover.png"}],["$","meta","9",{"property":"og:image:width","content":"1200"}],["$","meta","10",{"property":"og:image:height","content":"630"}],["$","meta","11",{"property":"og:image:alt","content":"Nikita E."}],["$","meta","12",{"property":"og:type","content":"website"}],["$","meta","13",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","14",{"name":"twitter:title","content":"Nikita E. — product manager"}],["$","meta","15",{"name":"twitter:description","content":"Nikita E.'s now page — product manager, career timeline, contact."}],["$","meta","16",{"name":"twitter:image","content":"https://nixroll.co/seo/cover.png"}],["$","link","17",{"rel":"icon","href":"/icon.svg?icon.3dllw0_wozupo.svg","sizes":"any","type":"image/svg+xml"}],["$","$La","18",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isPartial":"$@b","staleTime":"$7","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}]}]]}],"isPartial":"$@e","staleTime":"$7","varyParams":"$f"},{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0cyoh3posco-2.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3fntmmi971322.js","async":true}]],["$","html",null,{"lang":"en","className":"inter_2c8e4a9b-module__4tViSW__variable","children":["$","body",null,{"children":["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}],"notFound":[["$","div",null,{"className":"not-found-module__HS70Aa__page","children":["$","div",null,{"className":"not-found-module__HS70Aa__row","children":[["$","p",null,{"className":"not-found-module__HS70Aa__code","children":"404"}],["$","p",null,{"className":"not-found-module__HS70Aa__message","children":["This page could not be found. ",["$","$L2",null,{"href":"/","className":"not-found-module__HS70Aa__link","children":"Back to nixroll.co"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1w9de4778k0c2.css","precedence":"next"}]]]}]}]}]]}],"isPartial":"$@10","staleTime":"$7","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
+5:null
+7:300
+12:true
+7:C
+11:0
+b:"$undefined"
+e:"$undefined"
+10:"$undefined"
+6:"$undefined"
