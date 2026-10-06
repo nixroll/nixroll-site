@@ -27,7 +27,7 @@ export const timeline: TimelineItem[] = [
   {
     year: "2023",
     lead: "product manager",
-    glued: [{ text: "at" }, { text: "SRG+", href: "https://srgplus.app" }],
+    glued: [{ text: "at" }, { text: "SRG+", href: "https://apps.apple.com/us/app/srg/id6499464148" }],
   },
   {
     year: "2022",
