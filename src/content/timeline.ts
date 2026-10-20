@@ -30,18 +30,13 @@ export const timeline: TimelineItem[] = [
     glued: [{ text: "at" }, { text: "SRG+", href: "https://apps.apple.com/us/app/srg/id6499464148" }],
   },
   {
-    year: "2022",
+    year: "2021",
     lead: "project manager",
     glued: [{ text: "at" }, { text: "SCS", href: "https://creatorstudios.io" }],
   },
   {
-    year: "2020",
-    lead: "project manager",
-    glued: [{ text: "at" }, { text: "Appgile SL", href: "https://appgile.com" }],
-  },
-  {
     year: "2019",
-    lead: "design",
+    lead: "project manager",
     glued: [{ text: "at" }, { text: "Appgile SL", href: "https://appgile.com" }],
   },
   {
